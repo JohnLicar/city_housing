@@ -16,11 +16,13 @@ class ApplicantInfoFactory extends Factory
      */
     public function definition()
     {
+
         $civilStatus = $this->faker->randomElement(['Single', 'Married', 'Widowed', 'Divorced']);
         $gender = $this->faker->randomElement(['Male', 'Female']);
         $first_name = $this->faker->firstName($gender);
 
-        $table->string('income_per_month');
+        // $table->string('income_per_month');
+        return [
             'first_name' => $first_name,
             'middle_name' => $this->faker->lastName,
             'last_name' => $this->faker->lastName,
@@ -30,6 +32,7 @@ class ApplicantInfoFactory extends Factory
             'civil_status' => $civilStatus,
             'income_per_month' => $this->faker->numberBetween(3500, 25000),
             //
+
         ];
     }
 }

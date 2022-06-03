@@ -22,6 +22,7 @@
 <body>
     <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
+        @include('sweetalert::alert')
         @include('layouts.navigation')
         <!-- Mobile sidebar -->
         <!-- Backdrop -->

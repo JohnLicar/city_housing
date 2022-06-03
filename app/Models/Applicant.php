@@ -12,7 +12,7 @@ class Applicant extends Model
     use HasFactory, SoftDeletes, CascadeSoftDeletes;
 
     protected $guarded = [];
-    protected $cascadeDeletes = ['info', 'spouse', 'family_composition';
+    protected $cascadeDeletes = ['info', 'spouse', 'family_composition'];
 
     public function info()
     {
