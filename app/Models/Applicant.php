@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 
 class Applicant extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CascadeSoftDeletes;
+
+    protected $guarded = [];
+    protected $cascadeDeletes = ['info', 'spouse', 'family_composition';
 
     public function info()
     {
@@ -22,7 +26,7 @@ class Applicant extends Model
 
     public function family_composition()
     {
-        return $this->hasMany(FamilyComposition::class);
+        return $this->hasMany(FamilyComposition::class); //Rule alp
     }
 
     public function housing_project()
