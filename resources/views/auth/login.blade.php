@@ -45,12 +45,20 @@
                 <hr class="my-8" />
 
                 @if (Route::has('password.request'))
-                <p class="mt-4">
-                    <a class="text-sm font-medium text-primary-600 hover:underline"
-                        href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                </p>
+                <div class="flex justify-between">
+                    <p class="mt-4">
+                        <a class="text-sm font-medium text-primary-600 hover:underline"
+                            href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    </p>
+
+                    <p class="mt-4">
+                        <a class="text-sm font-medium text-primary-600 hover:underline" href="{{ route('register') }}">
+                            {{ __('Create Account') }}
+                        </a>
+                    </p>
+                </div>
                 @endif
             </div>
         </div>

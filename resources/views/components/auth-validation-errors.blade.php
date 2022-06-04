@@ -20,6 +20,9 @@
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
+            @if (session()->has('message'))
+            <li> {{ session('message') }}</li>
+            @endif
         </div>
     </div>
 </div>

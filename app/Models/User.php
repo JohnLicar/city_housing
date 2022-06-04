@@ -71,8 +71,8 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::creating(function ($user) {
-            // $user->password = Hash::make(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 10)), 0, 10));
-            $user->password = Hash::make($user->last_name);
+            $user->password = Hash::make(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 10)), 0, 10));
+            // $user->password = Hash::make($user->last_name);
         });
     }
 }

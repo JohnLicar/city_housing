@@ -24,7 +24,8 @@ class AdminSeeder extends Seeder
             'contact' => '(+63) 935 123 4567',
             'address' => '62V5+F58, Paterno Extension, Downtown, Tacloban City, Leyte',
             'email' => 'admin@admin.com',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'approve' => true
         ]);
 
         $admin->assignRole('admin');
