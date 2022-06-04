@@ -29,6 +29,7 @@ class User extends Authenticatable
         'contact',
         'email',
         'password',
+        'approve'
     ];
 
 
@@ -51,7 +52,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function search($search, $onlyTrashed = false)
+    public static function search($search)
     {
         return empty($search) ? static::query()
             : static::query()->where('first_name', 'like', '%' . $search . '%')

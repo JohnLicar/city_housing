@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,13 @@ require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
 
+    Route::group(['prefix' => 'admin', 'middleware' =>  ['role:Admin']], function () {
+        Route::resource('users', UserController::class);
+    });
 
-    Route::view('about', 'about')->name('about');
-
-    Route::resource('users', UserController::class);
+    Route::group(['prefix' => 'user', 'middleware' =>  ['role:User']], function () {
+        Route::resource('applicants', ApplicantsController::class);
+    });
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

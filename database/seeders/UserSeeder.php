@@ -16,11 +16,5 @@ class UserSeeder extends Seeder
     public function run()
     {
         $users = User::factory(1000)->create();
-
-        // $chunks = $users->chunk(200);
-
-        // $chunks->each(function ($chunk) {
-        //     User::insert($chunk->toArray());
-        // });
     }
 }

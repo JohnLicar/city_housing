@@ -31,6 +31,7 @@
                         <th class="px-4 py-3">Contact</th>
                         <th class="px-4 py-3">Address</th>
                         <th class="px-4 py-3">Email</th>
+                        <th class="px-4 py-3">Status</th>
                         <th class="px-4 py-3">Action</th>
                     </tr>
                 </thead>
@@ -67,6 +68,20 @@
                         <td class="px-4 py-3 text-sm">
                             {{ $user->email }}
                         </td>
+                        <td class="px-4 py-3 text-sm">
+                            @if ($user->approve)
+                            <span
+                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 text-white">
+                                Approved
+                            </span>
+                            @else
+                            <span
+                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
+                                Pending
+                            </span>
+                            @endif
+                        </td>
+
                         <td class="px-4 py-3 text-sm">
                             <div class="flex item-center justify-between">
                                 <div class="w-4 transform hover:text-purple-500 hover:scale-110 mr-5">

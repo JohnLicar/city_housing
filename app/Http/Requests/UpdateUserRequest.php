@@ -31,6 +31,7 @@ class UpdateUserRequest extends FormRequest
             'contact' => ['bail', 'required', 'min:11'],
             'address' => ['bail', 'required', 'min:10'],
             'email' => ['bail', 'required'],
+            'approve' => ['bail', 'required'],
 
         ];
     }

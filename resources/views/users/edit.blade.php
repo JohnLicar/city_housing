@@ -92,7 +92,21 @@
                 </select>
               </div>
 
+              <div>
+                <x-label for="approve" :value="__('Approve')" />
+                <select name="approve" id="approve" class=" block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring
+                  focus:ring-indigo-200 focus:ring-opacity-50">
+                  <option value="1" @if ($user->approve === 1 )
+                    selected @endif>
+                    Approve
+                  </option>
 
+                  <option value="0" @if ($user->approve === 0 )
+                    selected @endif>
+                    Pending
+                  </option>
+                </select>
+              </div>
 
             </div>
             <div class="flex items-center justify-end mt-4">
@@ -100,7 +114,7 @@
                 {{ __('Back') }}
               </x-back-button>
               <x-button class="ml-3">
-                {{ __('Create') }}
+                {{ __('Update') }}
               </x-button>
             </div>
           </form>
