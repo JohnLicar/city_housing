@@ -21,7 +21,6 @@ class ApplicantInfoFactory extends Factory
         $gender = $this->faker->randomElement(['Male', 'Female']);
         $first_name = $this->faker->firstName($gender);
 
-        // $table->string('income_per_month');
         return [
             'first_name' => $first_name,
             'middle_name' => $this->faker->lastName,

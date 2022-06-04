@@ -73,10 +73,6 @@
 
               <div>
                 <x-label for="contact" :value="__('Address')" />
-                {{-- <textarea type="text" name="address" id="address" rows="3"
-                  class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus-within:text-primary-600"
-                  cols="50"></textarea> --}}
-
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" />
               </div>
 
@@ -96,7 +92,9 @@
 
             </div>
             <div class="flex items-center justify-end mt-4">
-
+              <x-back-button href="{{ route('users.index') }}" class="ml-3">
+                {{ __('Back') }}
+              </x-back-button>
               <x-button class="ml-3">
                 {{ __('Create') }}
               </x-button>

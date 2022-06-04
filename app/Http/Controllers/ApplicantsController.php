@@ -24,7 +24,7 @@ class ApplicantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('applicants.create');
     }
 
     /**

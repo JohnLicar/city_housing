@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div class="flex h-screen bg-white" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
         @include('sweetalert::alert')
         @include('layouts.navigation')
