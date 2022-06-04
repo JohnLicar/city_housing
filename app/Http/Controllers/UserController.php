@@ -46,6 +46,7 @@ class UserController extends Controller
     {
 
         $this->authorize('user_create');
+
         $user = User::create($request->validated());
         $user->assignRole($request->role);
         toast('User Created Succesfully', 'success');

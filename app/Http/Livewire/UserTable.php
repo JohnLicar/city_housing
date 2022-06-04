@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class UserTable extends Component
 {
+    use WithPagination;
     public $search = '';
     public function render()
     {
@@ -15,5 +17,10 @@ class UserTable extends Component
             ->orderBy('created_at', 'desc')
             ->paginate(5);
         return view('livewire.user-table', compact('users'));
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }

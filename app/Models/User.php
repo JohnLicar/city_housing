@@ -51,12 +51,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function search($search)
+    public static function search($search, $onlyTrashed = false)
     {
         return empty($search) ? static::query()
             : static::query()->where('first_name', 'like', '%' . $search . '%')
             ->OrWhere('last_name', 'like', '%' . $search . '%')
             ->OrWhere('email', 'like', '%' . $search . '%');
+    }
+
+    public function scopeGetTrashed($query)
+    {
+        $query->onlyTrashed();
     }
 
     public function getFullNameAttribute()
@@ -71,8 +76,7 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::creating(function ($user) {
-            $user->password = Hash::make(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 10)), 0, 10));
-            // $user->password = Hash::make($user->last_name);
+            $user->password = Hash::make($user->full_name);
         });
     }
 }
