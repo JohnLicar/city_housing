@@ -12,18 +12,20 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/init-alpine.js') }}"></script>
 </head>
 
 <body>
+    <div class="absolute	">
+        <p class="mt-7 ml-5 text-xl font-medium text-black">
+            City Housing
+        </p>
+    </div>
 
-    <div class="flex items-center min-h-screen p-6 bg-gray-50">
-        <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
-            {{ $slot }}
-        </div>
+    <div class="flex flex-row relative min-h-screen">
+        {{ $slot }}
     </div>
 
 </body>

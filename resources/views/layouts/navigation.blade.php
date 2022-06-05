@@ -6,8 +6,8 @@
             </p>
 
             <ul class=" mt-4">
-                <li class="relative px-6 py-2">
-                    <x-nav-link class="{{ request()->routeIs('dashboard') ? 'text-blue-600' : 'text-cool-gray-600' }}"
+                <li class="relative px-6 py-2 ">
+                    <x-nav-link class="{{ request()->routeIs('dashboard') ? 'text-blue-600' : 'text-cool-gray-600' }} "
                         href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"

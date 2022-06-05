@@ -18,7 +18,7 @@ class ApprovalMiddleware
     {
         if (auth()->check() && !auth()->user()->approve) {
             auth()->logout();
-            return redirect()->route('login')->with('message', 'Your account needs Admin Approval');
+            return redirect()->back()->with('message', 'Your account needs Admin Approval');
         }
         return $next($request);
     }

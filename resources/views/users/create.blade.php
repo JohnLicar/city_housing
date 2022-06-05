@@ -14,29 +14,36 @@
           <form method="POST" action="{{  route('users.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="grid grid-cols-3 gap-6">
-
               <div>
-                <x-label for="first_name" :value="__('First Name')" />
-                <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
-                  :value="old('first_name')" autofocus />
+                <div class="relative">
+                  <x-floating-input type="text" name="first_name" id="first_name" :value="old('first_name')" />
+                  <x-floating-label for="first_name" :value="__('First Name')" />
+                </div>
               </div>
 
               <div>
-                <x-label for="middle_name" :value="__('Middle Name')" />
-                <x-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name"
-                  :value="old('middle_name')" />
+                <div class="relative">
+                  <x-floating-input type="text" name="middle_name" id="middle_name" :value="old('middle_name')" />
+                  <x-floating-label for="middle_name" :value="__('Middle Name')" />
+                </div>
               </div>
 
               <div>
-                <x-label for="last_name" :value="__('Last Name')" />
-                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
-                  :value="old('last_name')" />
+                <div class="relative">
+                  <x-floating-input type="text" name="last_name" id="last_name" :value="old('last_name')" />
+                  <x-floating-label for="last_name" :value="__('Last Name')" />
+                </div>
               </div>
 
               <div>
-                <x-label for="gender" :value="__('Gender')" />
-                <select name="gender" id="gender" class=" block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring
-                  focus:ring-indigo-200 focus:ring-opacity-50">
+
+                <select name="gender" id="gender" class="block px-2.5 pb-2.5 pt-4 w-full text-sm
+                text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
+                dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+
+                  <option value="">
+                    --Choose Gender--
+                  </option>
                   <option value="Male">
                     Male
                   </option>
@@ -51,35 +58,37 @@
                 </select>
               </div>
 
-
-
               <div>
-                <x-label for="contact" :value="__('Contact Number')" />
-                <x-input id="contact" class="block mt-1 w-full" type="text" name="contact" :value="old('contact')" />
+                <div class="relative">
+                  <x-floating-input type="text" name="contact" id="contact" :value="old('contact')" />
+                  <x-floating-label for="contact" :value="__('Contact Number')" />
+                </div>
               </div>
 
 
               <div>
-                <x-label for="email" :value="__('Email')" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
+                <div class="relative">
+                  <x-floating-input type="text" name="email" id="email" :value="old('email')" />
+                  <x-floating-label for="email" :value="__('Email')" />
+                </div>
               </div>
 
               <div>
-                <x-label for="password" :value="__('Password')" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password"
-                  :value="old('password')" />
 
+                <div class="relative">
+                  <x-floating-input type="text" name="address" id="address" :value="old('address')" />
+                  <x-floating-label for="address" :value="__('Address')" />
+                </div>
               </div>
 
               <div>
-                <x-label for="contact" :value="__('Address')" />
-                <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" />
-              </div>
 
-              <div>
-                <x-label for="role" :value="__('Role')" />
-                <select name="role" id="role" class=" block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring
-                  focus:ring-indigo-200 focus:ring-opacity-50">
+                <select name="role" id="role" class="block px-2.5 pb-2.5 pt-4 w-full text-sm
+                text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
+                dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                  <option value="">
+                    --Choose Role--
+                  </option>
                   @foreach ($roles as $role)
                   <option value="{{ $role->name }}">
                     {{ $role->name }}

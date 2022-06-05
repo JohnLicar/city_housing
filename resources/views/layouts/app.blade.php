@@ -31,15 +31,14 @@
             @include('layouts.top-menu')
             <main class="h-full overflow-y-auto">
                 <div class="container px-6 mx-auto grid">
-                    <h2 class="my-6 text-2xl font-semibold text-gray-700">
-                        {{ $header }}
-                    </h2>
-
-                    {{ $slot }}
+                    <div class="px-16">
+                        {{ $slot }}
+                    </div>
                 </div>
             </main>
         </div>
     </div>
+    <script src="{{ asset('js/flowbite.js') }}"></script>
     @livewireScripts
     @livewire('livewire-ui-modal')
 </body>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('gender');
             $table->string('contact');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

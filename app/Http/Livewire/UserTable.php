@@ -14,8 +14,12 @@ class UserTable extends Component
     {
         $users = User::search($this->search)
             ->where('id', '!=', auth()->id())
-            ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            // ->orderBy('created_at', 'desc')
+            ->where('created_at', '<=', now()->addDays(3))
+            ->latest()
+            ->take(10)
+            ->get();
+
         return view('livewire.user-table', compact('users'));
     }
 

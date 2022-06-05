@@ -7,6 +7,7 @@ module.exports = {
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
+        "./node_modules/flowbite/**/*.js",
     ],
 
     theme: {
@@ -59,6 +60,7 @@ module.exports = {
                 700: "#c81e1e",
                 800: "#9b1c1c",
                 900: "#771d1d",
+                1000: "#EF5350",
             },
             orange: {
                 50: "#fff8f1",
@@ -66,8 +68,8 @@ module.exports = {
                 200: "#fcd9bd",
                 300: "#fdba8c",
                 400: "#ff8a4c",
-                500: "#ff5a1f",
-                600: "#FF7043",
+                500: "#ff7043",
+                600: "#ff5a1f",
                 700: "#b43403",
                 800: "#8a2c0d",
                 900: "#771d1d",
@@ -90,14 +92,15 @@ module.exports = {
                 200: "#bcf0da",
                 300: "#84e1bc",
                 400: "#31c48d",
-                500: "#0e9f6e",
-                600: "#66BB6A",
+                500: "#66BB6A",
+                600: "#0e9f6e",
                 700: "#046c4e",
                 800: "#03543f",
                 900: "#014737",
+                1000: "#66BB6A",
             },
             teal: {
-                50: "#edfafa",
+                50: "#F7FAFF",
                 100: "#d5f5f6",
                 200: "#afecef",
                 300: "#7edce2",
@@ -115,10 +118,11 @@ module.exports = {
                 300: "#a4cafe",
                 400: "#76a9fa",
                 500: "#3f83f8",
-                600: "#316DE2",
+                600: "#5283F1",
                 700: "#1a56db",
                 800: "#1e429f",
                 900: "#233876",
+                1000: "#5283F1",
             },
 
             indigo: {
@@ -176,5 +180,5 @@ module.exports = {
         borderColor: ["focus", "hover"],
         boxShadow: ["focus"],
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [require("@tailwindcss/forms"), require("flowbite/plugin")],
 };
