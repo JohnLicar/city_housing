@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('applicants_infos', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
-            $table->string('middle_name')->nullable();
+            $table->string('middle_name')->default("-");
+            $table->string('suffix');
             $table->string('last_name');
             $table->string('brgy_origin');
             $table->string('birth_date');

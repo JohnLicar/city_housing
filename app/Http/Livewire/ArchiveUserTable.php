@@ -10,6 +10,9 @@ class ArchiveUserTable extends Component
 {
     use WithPagination;
     public $search;
+
+    protected $listeners = ['archiveUserTableRefreshEvent' => '$refresh'];
+
     public function render()
     {
         $users = User::search($this->search)

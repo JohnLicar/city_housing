@@ -19,7 +19,7 @@
 
 <body>
     <div class="absolute	">
-        <p class="mt-7 ml-5 text-xl font-medium text-black">
+        <p class="mt-7 ml-8 text-xl font-medium text-black">
             City Housing
         </p>
     </div>

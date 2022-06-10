@@ -21,6 +21,7 @@
 
 <body>
     <div class="flex h-screen bg-white" :class="{ 'overflow-hidden': isSideMenuOpen }">
+        @livewire('livewire-ui-modal')
         <!-- Desktop sidebar -->
         @include('sweetalert::alert')
         @include('layouts.navigation')
@@ -29,9 +30,9 @@
         @include('layouts.navigation-mobile')
         <div class="flex flex-col flex-1 w-full">
             @include('layouts.top-menu')
-            <main class="h-full overflow-y-auto">
-                <div class="container px-6 mx-auto grid">
-                    <div class="px-16">
+            <main class="sm:ml-0 md:ml-4 lg:ml-52">
+                <div class="container px-6 mx-auto">
+                    <div class="lg:px-16 sm:px-4">
                         {{ $slot }}
                     </div>
                 </div>
@@ -40,7 +41,7 @@
     </div>
     <script src="{{ asset('js/flowbite.js') }}"></script>
     @livewireScripts
-    @livewire('livewire-ui-modal')
+
 </body>
 
 </html>

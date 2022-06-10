@@ -20,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'first_name',
         'middle_name',
@@ -29,7 +30,8 @@ class User extends Authenticatable
         'contact',
         'email',
         'password',
-        'approve'
+        'approve',
+        'avatar'
     ];
 
 
@@ -77,7 +79,7 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::creating(function ($user) {
-            $user->password = Hash::make($user->full_name);
+            $user->password = Hash::make($user->last_name);
         });
     }
 }

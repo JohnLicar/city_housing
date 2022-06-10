@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <div class="basis-1/2 relative min-h-screen">
-        <div class="flex items-center justify-center  sm:p-12">
-            <div class="w-full h-full p-16 px-20">
+    <div class="basis-1/2 relative sm:basis-full min-h-screen">
+        <div class="flex items-center justify-center sm:p-12 h-full">
+            <div class="w-full lg:px-14 max-w-lg sm:px-7 sm:max-w-full">
                 <div class="mb-4">
                     <p class=" text-4xl font-medium text-black">
                         Create Account.
@@ -31,8 +31,8 @@
                                 <x-floating-label for="first_name" :value="__('First Name')" />
                             </div>
                             @error('first_name')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
 
@@ -43,8 +43,8 @@
                                 <x-floating-label for="last_name" :value="__('Last Name')" />
                             </div>
                             @error('last_name')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
 
@@ -56,8 +56,8 @@
                                 <x-floating-label for="contact" :value="__('Contact Number')" />
                             </div>
                             @error('contact')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
 
@@ -71,8 +71,8 @@
                                 <option value="Other" {{ old('gender')=="Other" ? 'selected' : '' }}>Other</option>
                             </select>
                             @error('gender')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
                     </div>
@@ -86,8 +86,8 @@
                                 <x-floating-label for="email" :value="__('Email')" />
                             </div>
                             @error('email')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
 
@@ -98,8 +98,8 @@
                                 <x-floating-label for="password" :value="__('Password')" />
                             </div>
                             @error('password')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
 
@@ -110,8 +110,8 @@
                                 <x-floating-label for="password_confirmation" :value="__('Confirm Password')" />
                             </div>
                             @error('password_confirmation')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400"><span
-                                    class="font-medium">Oh, snapp!</span>{{ $message }}</p>
+                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
+                                }}</p>
                             @enderror
                         </div>
                     </div>
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-    <div class="basis-1/2 bg-teal-50 invisible sm:visible">
+    <div class="basis-1/2 bg-teal-50 sm:hidden">
 
         <div class="item-center md:h-auto md:w-1/2 bg-teal-50 mx-auto mt-16 sm:h-auto ">
             <img aria-hidden="true" class="object-cover w-full" src="{{ asset('images/logo.png') }}" alt="Office" />

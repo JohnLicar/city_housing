@@ -19,8 +19,11 @@ class UserController extends Controller
     {
 
         $this->authorize('user_access');
+        $totalUsers = User::withTrashed()->count();
+        $pendingUsers = User::where('approve', false)->count();
+        $trashedUsers = User::onlyTrashed()->count();
 
-        return view('users.index');
+        return view('users.index', compact('totalUsers', 'pendingUsers', 'trashedUsers'));
     }
 
     /**

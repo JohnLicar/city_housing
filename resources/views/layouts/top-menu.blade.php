@@ -1,4 +1,4 @@
-<header class="z-10 py-4 bg-white shadow-md">
+<header class="nav-bar py-4 px-6 bg-white shadow-md ">
     <div class="container flex justify-between items-center px-6 mx-auto h-full text-purple-600 md:justify-end">
         <!-- Mobile hamburger -->
         <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
@@ -12,10 +12,10 @@
 
         <x-dropdown>
             <x-slot name="trigger">
-                <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none pr-16"
+                <button class="align-middle text-blue-900 rounded-full focus:shadow-outline-purple focus:outline-none"
                     @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account"
                     aria-haspopup="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-blue-600 " viewBox="0 0 20 20" fill="">
                         <path
                             d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
                     </svg>

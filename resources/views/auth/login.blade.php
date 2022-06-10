@@ -1,12 +1,14 @@
 <x-guest-layout>
-    <div class="basis-1/2 h-screen">
-        <div class="flex items-center justify-center  sm:p-12">
-            <div class="w-full p-16 px-40">
+    <div class="basis-1/2 sm:basis-full h-screen">
+        <div class="flex items-center justify-center sm:p-12 h-full">
+            <div class="w-full px-14 max-w-md">
                 <div class="mb-4">
-                    <p class="mt-7  text-4xl font-medium text-black">
+                    <img aria-hidden="true" class="object-cover mx-auto hidden sm:block sm:max-w-[60%]"
+                        src="{{ asset('images/logo.png') }}" alt="Office" />
+                    <p class="mt-7 text-4xl font-medium text-black sm:text-center">
                         Welcome Back
                     </p>
-                    <p>
+                    <p class="sm:text-center">
                         Please log-in your account to proceed.
                     </p>
                 </div>
@@ -27,6 +29,10 @@
                                 class="block w-full" required />
                             <x-floating-label for="email" :value="__('Email')" />
                         </div>
+                        @error('email')
+                        <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}
+                        </p>
+                        @enderror
                     </div>
 
                     <!-- Input[ype="password"] -->
@@ -35,15 +41,11 @@
                             <x-floating-input type="password" id="password" name="password" class="block w-full" />
                             <x-floating-label for="password" :value="__('Password')" />
                         </div>
+                        @error('password')
+                        <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}
+                        </p>
+                        @enderror
                     </div>
-
-                    {{-- <div class="flex mt-6 text-sm">
-                        <label class="flex items-center dark:text-gray-400">
-                            <input type="checkbox" name="remember"
-                                class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple">
-                            <span class="ml-2">{{ __('Remember me') }}</span>
-                        </label>
-                    </div> --}}
 
                     <div class="flex items-center mr-4  mt-6 ">
                         <input id="inline-checkbox" type="checkbox" name="remember"
@@ -63,13 +65,6 @@
 
                 @if (Route::has('password.request'))
                 <div class="text-center">
-                    {{-- <p class="mt-4">
-                        <a class="text-sm font-medium text-primary-600 hover:underline"
-                            href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
-                        </a>
-                    </p> --}}
-
                     <div class="mx-auto">
                         <p class="mt-4 ">
                             Don't have an account?
@@ -84,7 +79,7 @@
             </div>
         </div>
     </div>
-    <div class="basis-1/2 bg-teal-50 invisible sm:visible">
+    <div class="basis-1/2 bg-teal-50 sm:hidden">
 
         <div class="item-center md:h-auto md:w-1/2 bg-teal-50 mx-auto mt-16 sm:h-auto ">
             <img aria-hidden="true" class="object-cover w-full" src="{{ asset('images/logo.png') }}" alt="Office" />

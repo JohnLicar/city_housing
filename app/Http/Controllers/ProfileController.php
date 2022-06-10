@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\StoreImageAction;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileUpdateRequest;
 
@@ -12,17 +13,25 @@ class ProfileController extends Controller
         return view('auth.profile');
     }
 
-    public function update(ProfileUpdateRequest $request)
+    public function update(ProfileUpdateRequest $request, StoreImageAction $storeImageAction)
     {
         if ($request->password) {
             auth()->user()->update(['password' => Hash::make($request->password)]);
         }
 
-        auth()->user()->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
+        auth()->user()->update($request->validated());
 
-        return redirect()->back()->with('success', 'Profile updated.');
+
+        if ($request->hasFile('avatar')) {
+
+            if (auth()->user()->avatar)  unlink("images/profile/" . auth()->user()->avatar);
+            $avatar =  auth()->id() . '-' . $request->first_name . '-' . $request->last_name . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('images/profile'), $avatar);
+            auth()->user()->update(['avatar' => $avatar]);
+        }
+
+        toast('Profile Updated Succesfully', 'success');
+
+        return redirect()->back();
     }
 }

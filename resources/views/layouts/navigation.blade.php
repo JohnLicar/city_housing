@@ -1,13 +1,14 @@
-<aside class="z-20 hidden w-64 overflow-y-auto bg-white border-r-2 md:block flex-shrink-0">
+<aside
+    class=" hidden fixed top-0 left-0 w-64 overflow-y-auto bg-white border-r-2 md:block flex-shrink-0 h-screen z-[3]">
     <div class="py-4">
         <div>
             <p class="ml-6 mt-5 text-lg font-medium text-black">
                 Main Menu
             </p>
-
             <ul class=" mt-4">
                 <li class="relative px-6 py-2 ">
-                    <x-nav-link class="{{ request()->routeIs('dashboard') ? 'text-blue-600' : 'text-cool-gray-600' }} "
+                    <x-nav-link
+                        class="{{ request()->routeIs('dashboard') ? 'text-[#5283F1]' : 'text-[#525252]' }} hover:text-blue-900"
                         href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
@@ -17,14 +18,13 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </x-slot>
-                        {{ __('Dashboard') }}
+                        <span class="">{{ __('Dashboard') }}</span>
                     </x-nav-link>
                 </li>
 
                 @role('User|Admin')
                 <li class="relative px-6 py-2">
-                    <x-nav-link
-                        class="{{ request()->routeIs('applicants.*') ? 'text-blue-600' : 'text-cool-gray-600' }}"
+                    <x-nav-link class="{{ request()->routeIs('applicants.*') ? 'text-[#5283F1]' : 'text-[#525252]' }} "
                         href="{{ route('applicants.index') }}" :active="request()->routeIs('applicants.*')">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
@@ -32,14 +32,14 @@
                                 <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
                             </svg>
                         </x-slot>
-                        {{ __('Applicants') }}
+                        <span class="">{{ __('Applicants') }}</span>
                     </x-nav-link>
                 </li>
                 @endrole
 
                 @role('Admin')
                 <li class="relative px-6 py-2">
-                    <x-nav-link class="{{ request()->routeIs('users.*') ? 'text-blue-600' : 'text-cool-gray-600' }}"
+                    <x-nav-link class="{{ request()->routeIs('users.*') ? 'text-[#5283F1]' : 'text-[#525252]' }}"
                         href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
 
                         <x-slot name="icon">
@@ -50,12 +50,12 @@
                             </svg>
 
                         </x-slot>
-                        {{ __('Users') }}
+                        <span class="">{{ __('Users') }}</span>
                     </x-nav-link>
                 </li>
 
                 <li class="relative px-6 py-2">
-                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-cool-gray-600">
+                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-[#525252]">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -63,7 +63,7 @@
                                     d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                             </svg>
                         </x-slot>
-                        {{ __('Housing Projects') }}
+                        <span class="">{{ __('Housing Projects') }}
                     </x-nav-link>
                 </li>
                 @endrole
@@ -80,7 +80,7 @@
 
                 @role('Admin')
                 <li class="relative px-6 py-2">
-                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-cool-gray-600">
+                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-[#525252]">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -89,12 +89,12 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </x-slot>
-                        {{ __('System Settings') }}
+                        <span class="">{{ __('System Settings') }}</span>
                     </x-nav-link>
                 </li>
 
                 <li class="relative px-6 py-2">
-                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-cool-gray-600">
+                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-[#525252]">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -103,7 +103,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </x-slot>
-                        {{ __('User Roles') }}
+                        <span class="">{{ __('User Roles') }}</span>
                     </x-nav-link>
                 </li>
                 @endrole
@@ -127,12 +127,13 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </x-slot>
-                        {{ __('Accounts Logs') }}
+                        <span class="">{{ __('Accounts Logs') }}</span>
                     </x-nav-link>
                 </li>
 
                 <li class="relative px-6 py-2">
-                    <x-nav-link href="{{ route('users.index') }}" :active="false" class="text-cool-gray-600">
+                    <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')"
+                        class="{{ request()->routeIs('profile.show') ? 'text-[#5283F1]' : 'text-[#525252]' }}">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -141,7 +142,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </x-slot>
-                        {{ __('Accounts Settings') }}
+                        <span class="">{{ __('Accounts Settings') }}</span>
                     </x-nav-link>
                 </li>
                 @endrole
@@ -151,20 +152,18 @@
 
         </div>
 
-        <div class="relative h-32 w-32">
-            <div class="absolute inset-x-0 bottom-0 h-16">
-                <div class="flex items-center px-3">
-                    <div class="flex-shrink-0 h-16 w-16">
-                        <img src="{{ asset('images/logo.jpg') }}" class="mx-2 h-16 w-16 rounded-full" />
-                    </div>
-                    <div class="ml-4 text-base">
-                        <div class=" font-medium text-gray-900">
-                            {{ auth()->user()->full_name }}
+        <div class="fixed w-64 bottom-0 pb-3.5 left-0 bg-white border-2 ">
+            <div class="flex items-center px-3">
+                <div class="flex-shrink-0 h-16 w-16">
+                    <img src="{{ asset('images/logo.jpg') }}" class="mx-2 h-16 w-16 rounded-full" />
+                </div>
+                <div class="ml-4 text-base leading-4">
+                    <div class=" font-medium text-gray-900">
+                        {{ auth()->user()->full_name }}
 
-                        </div>
-                        <div class=" text-gray-500">
-                            {{ auth()->user()->email }}
-                        </div>
+                    </div>
+                    <div class=" text-gray-500 text-ellipsis overflow-hidden w-32 text-sm">
+                        {{ auth()->user()->email }}
                     </div>
                 </div>
             </div>
