@@ -26,7 +26,7 @@ class CheckOldPassword implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $value === auth()->user()->password;
+        return Hash::check($value, auth()->user()->password);
     }
 
     /**

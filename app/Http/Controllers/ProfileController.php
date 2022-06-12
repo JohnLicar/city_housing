@@ -13,13 +13,21 @@ class ProfileController extends Controller
         return view('auth.profile');
     }
 
-    public function update(ProfileUpdateRequest $request, StoreImageAction $storeImageAction)
+    public function update(ProfileUpdateRequest $request)
     {
         if ($request->password) {
             auth()->user()->update(['password' => Hash::make($request->password)]);
         }
 
-        auth()->user()->update($request->validated());
+        auth()->user()->update($request->only(
+            'first_name',
+            'middle_name',
+            'last_name',
+            'email',
+            'gender',
+            'address',
+            'contact'
+        ));
 
 
         if ($request->hasFile('avatar')) {
@@ -29,6 +37,9 @@ class ProfileController extends Controller
             $request->avatar->move(public_path('images/profile'), $avatar);
             auth()->user()->update(['avatar' => $avatar]);
         }
+        activity()
+            ->causedBy(auth()->user()->id)
+            ->log('Updated Profile');
 
         toast('Profile Updated Succesfully', 'success');
 

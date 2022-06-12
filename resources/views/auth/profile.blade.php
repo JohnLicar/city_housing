@@ -7,7 +7,7 @@
             <p class="text-base font-normal">Please make sure that your entered informations are correct.</p>
 
         </div>
-        {{ auth()->user()->password }}
+
         <div>
             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @method('PUT')

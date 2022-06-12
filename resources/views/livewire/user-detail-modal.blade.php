@@ -1,5 +1,5 @@
-<div>
-    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<div class="max-w-1/2 w-96">
+    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 ">
         <div class="sm:flex sm:items-start text-center content-center">
             <div class="mx-auto">
                 <img src="{{ asset('images/logo.png') }}" class="mx-auto h-48 w-48 rounded-full" />
