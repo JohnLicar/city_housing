@@ -175,7 +175,7 @@
                             <div class="flex justify-end gap-2 mt-4">
                                 <x-button
                                     class="block w-40 text-white bg-green-1000 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                    {{ __('Register') }}
+                                    {{ __('Save Changes') }}
                                 </x-button>
                                 {{-- <x-button
                                     class="block w-40 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
