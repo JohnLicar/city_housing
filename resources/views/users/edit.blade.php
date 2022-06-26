@@ -1,5 +1,5 @@
 <x-app-layout>
-  <div class="my-6 text-2xl font-semibold text-gray-700 mt-14">
+  <div class="my-6 text-2xl font-semibold text-gray-700 mt-32">
     <p class="text-2xl leading-8">
       Update Accounts
     </p>

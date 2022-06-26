@@ -44,16 +44,20 @@
 
         </div>
     </div>
-    <div class="bg-white px-4 py-3 mt-4 sm:px-6 sm:flex sm:flex-row-reverse">
+    <div class=" bg-white px-4 py-3 flex flex-row-reverse gap-2">
 
-        <button type="button"
-            class="w-full inline-flex justify-center text-lg font-medium text-red-1000 hover:text-red-700 hover:underline sm:ml-3 sm:w-auto sm:text-sm">
-            {{ $archive ? '' : 'Move to Trash' }}
+        <div>
+            <button type="button"
+                class="w-full inline-flex justify-center text-lg font-medium text-red-1000 hover:text-red-700 hover:underline sm:ml-3 sm:w-auto sm:text-sm">
+                {{ $archive ? '' : 'Move to Trash' }}
 
-        </button>
+            </button>
 
-        <button wire:click="$emit('closeModal')" type=" button"
-            class="w-full inline-flex justify-center text-lg font-medium text-black hover:text-gray-700 hover:underline sm:ml-3 sm:w-auto sm:text-sm">
-            Close
-        </button>
+        </div>
+        <div>
+            <button wire:click="$emit('closeModal')" type=" button"
+                class="w-full inline-flex justify-center text-lg font-medium text-black hover:text-gray-700 hover:underline sm:ml-3 sm:w-auto sm:text-sm">
+                Close
+            </button>
+        </div>
     </div>

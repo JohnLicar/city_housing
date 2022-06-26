@@ -6,7 +6,7 @@
           Pending Users
         </div>
         <div class="text-9xl mx-auto">
-          {{ 255 }}
+          {{-- {{ $pendingUsers }} --}}
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
           Trashed Users
         </div>
         <div class="text-9xl">
-          {{ 255 }}
+          {{-- {{ $trashedUsers }} --}}
         </div>
       </div>
     </div>
@@ -30,16 +30,22 @@
             Total Users
           </div>
           <div class="text-9xl">
-            {{ 255 }}
+            {{-- {{ $totalUsers }} --}}
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="pt-12 my-6  bg-white rounded-lg shadow-xs">
-    @livewire('applicants')
+  <div class="mt-14">
+    <div class="mt-4 bg-white rounded-lg shadow-xs">
+      <div class="my-6 text-2xl font-semibold text-gray-700 mt-14">
+        <p class="text-2xl leading-8">
+          Account Logs
+        </p>
+        <p class="text-base font-normal">Here are the activities of your account</p>
+        </p>
+      </div>
+      @livewire('account-logs')
+    </div>
   </div>
-
-
 </x-app-layout>

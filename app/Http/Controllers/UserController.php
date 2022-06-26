@@ -53,6 +53,11 @@ class UserController extends Controller
         $user = User::create($request->validated());
         $user->assignRole($request->role);
         toast('User Created Succesfully', 'success');
+
+        activity()
+            ->causedBy(auth()->user()->id)
+            ->log('Created a user');
+
         return redirect()->route('users.index');
     }
 

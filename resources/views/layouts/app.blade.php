@@ -10,7 +10,7 @@
 
     <link rel="icon" href="{{asset('images/logo.jpg')}}" />
 
-    <!-- Styles -->
+    <!-- Styles  -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
@@ -27,9 +27,13 @@
         @include('layouts.navigation')
         <!-- Mobile sidebar -->
         <!-- Backdrop -->
+
         @include('layouts.navigation-mobile')
-        <div class="flex flex-col flex-1 w-full">
+
+        <div class="flex flex-col flex-1 min-w-full">
+
             @include('layouts.top-menu')
+
             <main class="sm:ml-0 md:ml-4 lg:ml-52">
                 <div class="container px-6 mx-auto">
                     <div class="lg:px-16 sm:px-4">
@@ -41,6 +45,7 @@
     </div>
     <script src="{{ asset('js/flowbite.js') }}"></script>
     @livewireScripts
+    @stack('scripts')
 
 </body>
 

@@ -1,4 +1,4 @@
-<header class="nav-bar py-4 px-6 bg-white shadow-md ">
+<header class="nav-bar py-4 px-6 bg-white shadow-md w-screen">
     <div class="container flex justify-between items-center px-6 mx-auto h-full text-purple-600 md:justify-end">
         <!-- Mobile hamburger -->
         <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"

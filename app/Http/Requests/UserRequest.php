@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
             'contact' => ['bail', 'required', 'min:11'],
             'address' => ['bail', 'required', 'min:10'],
             'email' => ['bail', 'required', 'unique:users,email'],
-            'password' => ['bail', 'required', Password::min(5)],
+            // 'password' => ['bail', 'required', Password::min(5)],
         ];
     }
 }

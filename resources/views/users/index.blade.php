@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex flex-row sm:flex-col gap-2 my-6 pt-12">
+    <div class="flex flex-row sm:flex-col gap-2 my-6 pt-12 relative">
         <div class="flex items-center p-4 w-2/5 sm:w-full bg-blue-1000 rounded-lg shadow-xs text-white">
             <div class=" text-base">
                 <div class="ml-3 font-medium leading-5">
@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-
+    <x-auth-validation-errors />
     <div class="mt-14">
         <div class="mt-4 bg-white rounded-lg shadow-xs">
             <div class="my-6 text-2xl font-semibold text-gray-700 mt-14">
@@ -49,7 +49,7 @@
             @livewire('user-table')
         </div>
 
-        <div class="mt-4     bg-white rounded-lg shadow-xs">
+        <div class="mt-4 bg-white rounded-lg shadow-xs">
             <div class="my-6 text-2xl font-semibold text-gray-700 mt-14">
                 <p class="text-2xl leading-8">
                     Archive Accounts

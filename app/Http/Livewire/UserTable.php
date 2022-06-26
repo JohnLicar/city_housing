@@ -19,8 +19,7 @@ class UserTable extends Component
             // ->orderBy('created_at', 'desc')
             ->where('created_at', '<=', now()->addDays(3))
             ->latest()
-            ->take(5)
-            ->get();
+            ->paginate(5);
 
         return view('livewire.user-table', compact('users'));
     }

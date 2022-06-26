@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AccountLogController;
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\AccountLogs;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,14 +28,16 @@ require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
 
-    Route::group(['prefix' => 'admin', 'middleware' =>  ['role:Admin']], function () {
+    Route::group(['middleware' =>  ['role:Admin']], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('account-log', AccountLogController::class)->name('account.log');
         Route::resource('users', UserController::class);
+        Route::resource('applicants', ApplicantsController::class);
         Route::resource('roles', RolesController::class);
     });
 
-    Route::group(['prefix' => 'user', 'middleware' =>  ['role:User']], function () {
-        Route::resource('applicants', ApplicantsController::class);
+    Route::group(['middleware' =>  ['role:User']], function () {
+        Route::resource('applicant', ApplicantsController::class);
     });
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');

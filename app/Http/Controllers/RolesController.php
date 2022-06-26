@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
@@ -57,9 +58,10 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        // dd($role->load('permissions'));
+        return view('roles.edit')->with('role', $role->load('permissions'));
     }
 
     /**

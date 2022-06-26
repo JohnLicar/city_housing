@@ -37,6 +37,8 @@ class ProfileController extends Controller
             $request->avatar->move(public_path('images/profile'), $avatar);
             auth()->user()->update(['avatar' => $avatar]);
         }
+
+
         activity()
             ->causedBy(auth()->user()->id)
             ->log('Updated Profile');

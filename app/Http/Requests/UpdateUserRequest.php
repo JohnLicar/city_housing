@@ -30,8 +30,8 @@ class UpdateUserRequest extends FormRequest
             'gender' => ['bail', 'required'],
             'contact' => ['bail', 'required', 'min:11'],
             'address' => ['bail', 'required', 'min:10'],
-            'email' => ['bail', 'required'],
-            'approve' => ['bail', 'required'],
+            'email' => ['bail', 'nullable'],
+            'approve' => ['bail', 'required', 'boolean'],
 
         ];
     }

@@ -1,13 +1,12 @@
 <div class="mt-5">
 
-    <div class=" flex justify-between relative mb-3 ">
+    <div class=" flex justify-between mb-3 ">
 
-        <a href="{{ route('users.create') }}">
-            <x-button class="bg-blue-1000 px-6">
-
-                {{ __('New User') }}
-            </x-button>
-        </a>
+        <button class="px-4 py-2 text-sm font-medium leading-5 text-center
+        text-white transition-colors duration-150 bg-blue-1000 border border-transparent rounded-lg active:bg-blue-900
+        hover:bg-blue-700 focus:outline-none focus:ring" wire:click='$emit("openModal", "user-modal.create-user")'>
+            {{ __('New User') }}
+        </button>
 
         <x-input wire:model.debounce.300ms="search" id="search" class="right-0 w-1/3 sm:w-1/2" type="search"
             name="search" placeholder="Search" :value="old('search')" />
@@ -43,9 +42,16 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             <div class="flex items-center">
+                                @if ($user->avatar)
+                                <div class="mt-6 my-auto h-16 w-16">
+                                    <img src="{{ asset('images/'.$user->avatar) }}"
+                                        class="mx-2 h-10 w-10 rounded-full" />
+                                </div>
+                                @else
                                 <div class="mt-6 my-auto h-16 w-16">
                                     <img src="{{ asset('images/logo.jpg') }}" class="mx-2 h-10 w-10 rounded-full" />
                                 </div>
+                                @endif
                                 <span>{{$user->full_name}}</span>
                             </div>
                         </th>
@@ -72,9 +78,11 @@
                                     </button>
                                 </div>
                                 <div class="w-full transform font-medium hover:text-purple-500 hover:scale-110 ">
-                                    <a href="{{ route('users.edit', $user) }}">
+
+                                    <button wire:click='$emit("openModal", "user-modal.edit-user" , {{
+                                        json_encode(["user" => $user->id]) }})'>
                                         Edit
-                                    </a>
+                                    </button>
                                 </div>
 
                                 <div
@@ -100,6 +108,9 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+        <div>
+            {{ $users->links() }}
         </div>
     </div>
 

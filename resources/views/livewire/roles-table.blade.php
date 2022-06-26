@@ -2,10 +2,10 @@
 
     <div class=" flex justify-between relative mb-3 ">
 
-        <a href="{{ route('users.create') }}">
+        <a href="{{ route('roles.create') }}">
             <x-button class="bg-blue-1000 px-6">
 
-                {{ __('New User') }}
+                {{ __('New Role') }}
             </x-button>
         </a>
 
@@ -51,15 +51,9 @@
 
                         <td class="px-6 py-4 text-center ">
                             <div class="flex justify-between ">
-                                <div
-                                    class="w-full transform  font-medium text-blue-1000 hover:text-blue-900 hover:scale-110 ">
-                                    <button wire:click='$emit("openModal", "user-detail-modal" , {{
-                                        json_encode(["user" => $role->id]) }})'>
-                                        View Detail
-                                    </button>
-                                </div>
+
                                 <div class="w-full transform font-medium hover:text-purple-500 hover:scale-110 ">
-                                    <a href="{{ route('users.edit', $role) }}">
+                                    <a href="{{ route('roles.edit', $role) }}">
                                         Edit
                                     </a>
                                 </div>
