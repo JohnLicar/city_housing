@@ -45,7 +45,7 @@
         <p class="text-base font-normal">Here are the activities of your account</p>
         </p>
       </div>
-      @livewire('account-logs')
+      @livewire('account-logs.account-table-logs')
     </div>
   </div>
 </x-app-layout>

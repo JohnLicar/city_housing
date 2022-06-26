@@ -56,6 +56,7 @@ class UserController extends Controller
 
         activity()
             ->causedBy(auth()->user()->id)
+            ->event('User Created')
             ->log('Created a user');
 
         return redirect()->route('users.index');

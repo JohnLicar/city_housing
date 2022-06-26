@@ -1,4 +1,6 @@
-<aside class="hidden fixed top-0 left-0 w-64 overflow-y-auto bg-white border-r-2 md:block flex-shrink-0 h-screen z-[3]">
+<aside
+    class=" hidden fixed top-0 left-0 w-64 overflow-y-auto bg-white border-r-2 md:block flex-shrink-0 h-screen z-[5]">
+
     <div class="py-4">
         <div>
             <p class="ml-6 mt-5 text-lg font-medium text-black">
@@ -118,8 +120,8 @@
             <ul class="mt-4">
                 @role('Admin')
                 <li class="relative px-6 py-2">
-                    <x-nav-link href="{{ route('account.log') }}" :active="request()->routeIs('account.log')"
-                        class="{{ request()->routeIs('account.log') ? 'text-[#5283F1]' : 'text-[#525252]' }}">
+                    <x-nav-link href="{{ url('accountlogs') }}" :active="request()->is('accountlogs')"
+                        class="{{ request()->is('accountlogs') ? 'text-[#5283F1]' : 'text-[#525252]' }}">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">

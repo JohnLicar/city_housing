@@ -186,5 +186,8 @@ module.exports = {
         borderColor: ["focus", "hover"],
         boxShadow: ["focus"],
     },
-    plugins: [require("@tailwindcss/forms"), require("flowbite/plugin")],
+    plugins: [
+        require("@tailwindcss/forms"), 
+        require("flowbite/plugin"),
+    ],
 };

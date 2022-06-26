@@ -36,7 +36,8 @@
             </div>
         </div>
     </div>
-    <x-auth-validation-errors />
+
+
     <div class="mt-14">
         <div class="mt-4 bg-white rounded-lg shadow-xs">
             <div class="my-6 text-2xl font-semibold text-gray-700 mt-14">

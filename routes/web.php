@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\AccountLogController;
-use App\Http\Controllers\ApplicantsController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RolesController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{
+    AccountLogsController,
+    ApplicantsController,
+    DashboardController,
+    RolesController,
+    UserController
+};
+
 use App\Http\Livewire\AccountLogs;
 use Illuminate\Support\Facades\Route;
 
@@ -28,17 +31,13 @@ require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
 
-    Route::group(['middleware' =>  ['role:Admin']], function () {
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('account-log', AccountLogController::class)->name('account.log');
-        Route::resource('users', UserController::class);
-        Route::resource('applicants', ApplicantsController::class);
-        Route::resource('roles', RolesController::class);
-    });
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RolesController::class);
 
-    Route::group(['middleware' =>  ['role:User']], function () {
-        Route::resource('applicant', ApplicantsController::class);
-    });
+    Route::resource('applicants', ApplicantsController::class);
+
+    Route::resource('accountlogs', AccountLogsController::class);
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
