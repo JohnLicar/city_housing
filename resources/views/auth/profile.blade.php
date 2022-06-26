@@ -12,7 +12,7 @@
             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="pr-72">
+                <div class="">
                     <p class="font-medium text-lg">Basic Info</p>
                     <div class="grid grid-cols-2 gap-2">
 
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <select id="gender" name="gender" class="block px-2.5 pb-2.5 pt-4 w-full text-sm
+                            <select id="gender" name="gender" class="block p-3 w-full text-sm
                     text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                     dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                 <option>Select Gender</option>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="border-b-2 mt-6"></div>
-                <div class="pr-72">
+                <div class="">
                     <div class="text-2xl font-semibold text-gray-700 mt-5">
                         <p class="text-2xl leading-8">
                             {{ __('Login Credentials' ) }}
@@ -175,7 +175,7 @@
                             <div class="flex justify-end gap-2 mt-4">
                                 <x-button
                                     class="block w-40 text-white bg-green-1000 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                    {{ __('Register') }}
+                                    {{ __('Save Changes') }}
                                 </x-button>
                                 {{-- <x-button
                                     class="block w-40 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
