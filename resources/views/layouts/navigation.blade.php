@@ -1,5 +1,5 @@
 <aside
-    class=" hidden fixed top-0 left-0 w-64 overflow-y-auto bg-white border-r-2 md:block flex-shrink-0 h-screen z-[3]">
+    class=" hidden fixed top-0 left-0 w-64 overflow-y-auto bg-white border-r-2 md:block flex-shrink-0 h-screen z-[5]">
     <div class="py-4">
         <div>
             <p class="ml-6 mt-5 text-lg font-medium text-black">
