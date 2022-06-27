@@ -70,7 +70,7 @@
             </x-slot>
         </x-table>
         <div class="mt-5 mb-5">
-            {{ $logs->withQueryString()->links('pagination::tailwind') }}
+            {{ $logs->links() }}
         </div>
     </div>
 
