@@ -29,7 +29,7 @@
                         <div class="mt-4">
                             <div class="relative">
                                 <x-floating-input type="text" id="middle_name" name="middle_name"
-                                    wire:model="middle_name" required />
+                                    wire:model="middle_name" />
                                 <x-floating-label for="middle_name" :value="__('Middle Name')" />
                             </div>
                             @error('middle_name')

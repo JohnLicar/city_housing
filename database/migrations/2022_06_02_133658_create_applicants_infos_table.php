@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('middle_name')->default("-");
-            $table->string('suffix');
             $table->string('last_name');
+            $table->string('suffix')->nullable();
             $table->string('brgy_origin');
             $table->string('birth_date');
             $table->string('civil_status');

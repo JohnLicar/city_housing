@@ -93,12 +93,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(UpdateUserRequest $request, User $user)
     {
+
         $this->authorize('user_update');
         $user->update($request->validated());
         $user->syncRoles($request->role);
         toast('User Updated Succesfully', 'success');
+
+        activity()
+            ->causedBy(auth()->user()->id)
+            ->event('Housing project Created')
+            ->log('Created a housing project');
+
+
         return redirect()->route('users.index');
     }
 

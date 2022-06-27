@@ -9,5 +9,13 @@ class HousingProject extends Model
 {
     use HasFactory;
 
+
+    // protected $fillable = [
+    //     'location',
+    //     'project',
+    //     'description',
+
+    // ];
+
     protected $guarded = [];
 }

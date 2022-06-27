@@ -39,6 +39,14 @@ case 'User Restored':
 $class = 'bg-green-500';
 break;
 
+case 'User Restored':
+$class = 'bg-green-500';
+break;
+
+case 'User Profile Updated':
+$class = 'bg-green-500';
+break;
+
 
 
 default:

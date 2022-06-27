@@ -19,7 +19,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // NOTES
         // 1.) Soft Delete -> Trash
         // 2.) Admin role can view user logs
-        // 3.) 
+        // 3.)
 
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
@@ -40,11 +40,15 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'role_edit']);
         Permission::create(['name' => 'role_delete']);
         Permission::create(['name' => 'role_access']);
+        Permission::create(['name' => 'housingprojct_create']);
+        Permission::create(['name' => 'ousingprojct_update']);
+        Permission::create(['name' => 'housingprojct_delete']);
+        Permission::create(['name' => 'housingprojct_access']);
         Permission::create(['name' => 'user_create']);
         Permission::create(['name' => 'user_update']);
         Permission::create(['name' => 'user_delete']);
         Permission::create(['name' => 'user_access']);
-        Permission::create(['name' => 'access_logs']); //for viewing logs of users - admin 
+        Permission::create(['name' => 'access_logs']); //for viewing logs of users - admin
 
         $userPermissions = [
             'applicant_access',
@@ -53,6 +57,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'applicant_create',
             'applicant_edit',
             'applicant_delete',
+            // 'housingproject_create',
+            // 'housingproject_update',
+            // 'housingproject_delete',
+            // 'housingproject_access',
         ];
 
         $role = Role::create(['name' => 'User'])->givePermissionTo($userPermissions);

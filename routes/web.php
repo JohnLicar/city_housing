@@ -4,6 +4,7 @@ use App\Http\Controllers\{
     AccountLogsController,
     ApplicantsController,
     DashboardController,
+    HousingUnitController,
     RolesController,
     UserController
 };
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', UserController::class);
     Route::resource('roles', RolesController::class);
+    Route::resource('housingprojects', HousingUnitController::class);
 
     Route::resource('applicants', ApplicantsController::class);
 

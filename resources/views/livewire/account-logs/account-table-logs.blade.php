@@ -1,6 +1,6 @@
 <div class="mt-5">
 
-    <div class="flex justify-end relative mb-5">
+    <div class="relative flex justify-end mb-5">
         <x-input wire:model.debounce.400ms="search" id="search" class="right-0 w-1/3 sm:w-1/2" type="text" name="search"
             placeholder="Search" :value="old('search')" />
         <div class="absolute top-4 right-3">
@@ -14,7 +14,7 @@
     </div>
     <div class="container overflow-x-auto ">
         <div class="w-full shadow-sm sm:rounded-lg">
-            <table class="[&>*]:p-4 w-full text-sm text-left text-gray-500 table-auto dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 table-auto dark:text-gray-400">
                 <thead class="text-sm text-black uppercase bg-[#ECECED] dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -38,7 +38,7 @@
 
                 <tbody>
                     @forelse ($logs as $log)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-gray-900 dark:text-white">
+                    <tr class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                         <td class="px-6 py-4">
                             {{ $log->id }}
                         </td>
@@ -51,18 +51,16 @@
                         <td class="px-6 py-4">
                             <x-chip :event="$log->event">
                             </x-chip>
-                            {{-- <span class="bg-green-500 rounded-full py-2 px-4 text-xs text-white whitespace-nowrap">
-                                {{ $log->event }}
-                            </span> --}}
+
                         </td>
                         <td class="px-6 py-4">
-                            {{-- {{ $log->created_at->format('Y-m-d h:i A') }} --}}
+
                             {{ $log->created_at->format('F j, Y h:i:s A') }}
                         </td>
                     </tr>
                     @empty
                     <td class="py-6" colspan="4">
-                        <div class="flex justify-center flex-col place-items-center align-center">
+                        <div class="flex flex-col justify-center place-items-center align-center">
                             <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
                             <div class="">
                                 <p class="mt-5">

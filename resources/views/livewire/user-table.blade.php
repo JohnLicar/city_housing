@@ -1,10 +1,10 @@
 <div class="mt-5">
 
-    <div class=" flex justify-between mb-3 ">
+    <div class="flex justify-between mb-3 ">
 
-        <button class="px-4 py-2 text-sm font-medium leading-5 text-center
-        text-white transition-colors duration-150 bg-blue-1000 border border-transparent rounded-lg active:bg-blue-900
-        hover:bg-blue-700 focus:outline-none focus:ring" wire:click='$emit("openModal", "user-modal.create-user")'>
+        <button
+            class="px-4 py-2 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg bg-blue-1000 active:bg-blue-900 hover:bg-blue-700 focus:outline-none focus:ring"
+            wire:click='$emit("openModal", "user-modal.create-user")'>
             {{ __('New User') }}
         </button>
 
@@ -43,13 +43,13 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             <div class="flex items-center">
                                 @if ($user->avatar)
-                                <div class="mt-6 my-auto h-16 w-16">
+                                <div class="w-16 h-16 my-auto mt-6">
                                     <img src="{{ asset('images/'.$user->avatar) }}"
-                                        class="mx-2 h-10 w-10 rounded-full" />
+                                        class="w-10 h-10 mx-2 rounded-full" />
                                 </div>
                                 @else
-                                <div class="mt-6 my-auto h-16 w-16">
-                                    <img src="{{ asset('images/logo.jpg') }}" class="mx-2 h-10 w-10 rounded-full" />
+                                <div class="w-16 h-16 my-auto mt-6">
+                                    <img src="{{ asset('images/logo.jpg') }}" class="w-10 h-10 mx-2 rounded-full" />
                                 </div>
                                 @endif
                                 <span>{{$user->full_name}}</span>
@@ -64,20 +64,20 @@
 
                         </td>
                         <td class="px-6 py-4">
-                            {{ $user->created_at }}
+                            {{ $user->created_at->format('F j, Y h:i:s A') }}
 
                         </td>
 
                         <td class="px-6 py-4 text-center ">
                             <div class="flex justify-between ">
                                 <div
-                                    class="w-full transform  font-medium text-blue-1000 hover:text-blue-900 hover:scale-110 ">
+                                    class="w-full font-medium transform text-blue-1000 hover:text-blue-900 hover:scale-110 ">
                                     <button wire:click='$emit("openModal", "user-detail-modal" , {{
                                         json_encode(["user" => $user->id]) }})'>
                                         View Detail
                                     </button>
                                 </div>
-                                <div class="w-full transform font-medium hover:text-purple-500 hover:scale-110 ">
+                                <div class="w-full font-medium transform hover:text-purple-500 hover:scale-110 ">
 
                                     <button wire:click='$emit("openModal", "user-modal.edit-user" , {{
                                         json_encode(["user" => $user->id]) }})'>
@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div
-                                    class="w-full transform font-medium text-red-600 hover:text-red-900 hover:scale-110">
+                                    class="w-full font-medium text-red-600 transform hover:text-red-900 hover:scale-110">
                                     <button type="submit"
                                         wire:click='$emit("openModal", "confirm-delete-modal" , {{ json_encode([$user->id, "delete"]) }})'>
                                         Move to Trash
@@ -110,7 +110,7 @@
             </table>
         </div>
         <div>
-            {{ $users->links() }}
+            {{ $users->onEachSide(2)->links() }}
         </div>
     </div>
 

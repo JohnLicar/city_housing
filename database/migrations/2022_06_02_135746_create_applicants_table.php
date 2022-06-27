@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignId('spouse_id')->constrained('spouses');
             $table->foreignId('housing_project_id')->constrained('housing_projects');
             $table->foreignId('real_holding_id')->constrained('real_holdings');
-            $table->foreignId('application_status_id')->constrained('application_status');
+            // $table->foreignId('application_status_id')->constrained('application_status');
+            $table->foreignId('application_status');
             $table->softDeletes();
             $table->timestamps();
         });
