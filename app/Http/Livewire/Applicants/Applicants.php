@@ -10,7 +10,7 @@ class Applicants extends Component
     public function render()
     {
         $applicants = Applicant::with('info')->get();
-        dd($applicants);
+
         return view('livewire.applicants.applicants');
     }
 }
