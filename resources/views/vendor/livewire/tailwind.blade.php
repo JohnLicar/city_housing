@@ -94,6 +94,7 @@
 
                     {{-- Array Of Links --}}
                     @if (is_array($element))
+                    {{-- {{ dd($element) }} --}}
                     @foreach ($element as $page => $url)
                     <span
                         wire:key="paginator-{{ $paginator->getPageName() }}-{{ $this->numberOfPaginatorsRendered[$paginator->getPageName()] }}-page{{ $page }}">
@@ -109,8 +110,8 @@
                             aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
                             {{ $page }}
                         </button>
-                        @endif
                     </span>
+                    @endif
                     @endforeach
                     @endif
                     @endforeach

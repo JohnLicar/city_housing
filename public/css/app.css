@@ -1262,6 +1262,9 @@ input:checked + .toggle-bg {
 .h-9 {
   height: 2.25rem;
 }
+.h-3 {
+  height: 0.75rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1335,6 +1338,9 @@ input:checked + .toggle-bg {
 }
 .w-1\/2 {
   width: 50%;
+}
+.w-3 {
+  width: 0.75rem;
 }
 .min-w-full {
   min-width: 100%;
@@ -1533,10 +1539,19 @@ input:checked + .toggle-bg {
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-x-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+.divide-cool-gray-200 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-divide-opacity));
 }
 .overflow-auto {
   overflow: auto;
@@ -2150,6 +2165,14 @@ input:checked + .toggle-bg {
   --tw-text-opacity: 1;
   color: rgb(81 69 205 / var(--tw-text-opacity));
 }
+.text-cool-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(26 32 46 / var(--tw-text-opacity));
+}
+.text-cool-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2170,6 +2193,9 @@ input:checked + .toggle-bg {
 }
 .opacity-75 {
   opacity: 0.75;
+}
+.opacity-50 {
+  opacity: 0.5;
 }
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -2500,6 +2526,11 @@ input:checked + .toggle-bg {
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
+.focus\:underline:focus {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2600,6 +2631,14 @@ input:checked + .toggle-bg {
 
 .disabled\:opacity-25:disabled {
   opacity: 0.25;
+}
+
+.group:hover .group-hover\:opacity-0 {
+  opacity: 0;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
 }
 
 .peer:-moz-placeholder-shown ~ .peer-placeholder-shown\:top-1\/2 {

@@ -109,8 +109,8 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            {{ $users->onEachSide(2)->links() }}
+        <div class="mt-5">
+            {{ $users->onEachSide(4)->links() }}
         </div>
     </div>
 

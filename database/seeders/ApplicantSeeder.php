@@ -6,7 +6,7 @@ use App\Models\Applicant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ApplicantFactorySeeder extends Seeder
+class ApplicantSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class ApplicantFactorySeeder extends Seeder
      */
     public function run()
     {
-        Applicant::factory()
+        Applicant::factory(100)->create();
     }
 }

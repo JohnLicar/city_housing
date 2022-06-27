@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-5 mb-5">
 
     <div class="relative flex justify-end mb-5">
         <x-input wire:model.debounce.400ms="search" id="search" class="right-0 w-1/3 sm:w-1/2" type="text" name="search"
@@ -12,70 +12,65 @@
             </svg>
         </div>
     </div>
-    <div class="container overflow-x-auto ">
-        <div class="w-full shadow-sm sm:rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 table-auto dark:text-gray-400">
-                <thead class="text-sm text-black uppercase bg-[#ECECED] dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            ID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Log Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Description
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Event
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Created At
-                        </th>
-                    </tr>
 
-                </thead>
-
-                <tbody>
-                    @forelse ($logs as $log)
-                    <tr class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                        <td class="px-6 py-4">
-                            {{ $log->id }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $log->log_name }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $log->description }}
-                        </td>
-                        <td class="px-6 py-4">
-                            <x-chip :event="$log->event">
-                            </x-chip>
-
-                        </td>
-                        <td class="px-6 py-4">
-
-                            {{ $log->created_at->format('F j, Y h:i:s A') }}
-                        </td>
-                    </tr>
-                    @empty
-                    <td class="py-6" colspan="4">
-                        <div class="flex flex-col justify-center place-items-center align-center">
-                            <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
-                            <div class="">
-                                <p class="mt-5">
-                                    No data for your activity logs
-                                </p>
-                            </div>
+    <div class="container overflow-x-auto">
+        <x-table>
+            <x-slot name="head">
+                <x-table.heading sortable multi-column wire:click="sortBy('id')" :direction="$sorts['id'] ?? null">
+                    ID
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('log_name')"
+                    :direction="$sorts['log_name'] ?? null">
+                    Log Name
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('description')"
+                    :direction="$sorts['description'] ?? null">
+                    Description
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('event')"
+                    :direction="$sorts['event'] ?? null">
+                    Event
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('created_at')"
+                    :direction="$sorts['created_at'] ?? null">
+                    Created At
+                </x-table.heading>
+            </x-slot>
+            <x-slot name="body">
+                @forelse ($logs as $log)
+                <x-table.row wire:loading.class="opacity-50">
+                    <x-table.cell class="cell">
+                        {{ $log->id }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $log->log_name }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $log->description }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        <x-chip :event="$log->event" />
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $log->created_at->format('F j, Y h:i:s A') }}
+                    </x-table.cell>
+                </x-table.row>
+                @empty
+                <td class="py-6" colspan="5">
+                    <div class="flex flex-col justify-center place-items-center align-center">
+                        <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
+                        <div class="">
+                            <p class="mt-5 text-gray-500">
+                                No data available ...
+                            </p>
                         </div>
-                    </td>
-                    @endforelse
-                </tbody>
-            </table>
-
-            <div class="mt-4">
-                {{ $logs->links() }}
-            </div>
+                    </div>
+                </td>
+                @endforelse
+            </x-slot>
+        </x-table>
+        <div class="mt-5 mb-5">
+            {{ $logs->withQueryString()->links('pagination::tailwind') }}
         </div>
     </div>
 

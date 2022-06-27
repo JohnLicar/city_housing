@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('real_holdings', function (Blueprint $table) {
+        Schema::create('applicant_real_holdings', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->foreignId('applicants_id')->constrained('applicants');
+            $table->foreignId('real_holdings_id')->constrained('real_holdings');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('real_holdings');
+        Schema::dropIfExists('applicant_real_holdings');
     }
 };

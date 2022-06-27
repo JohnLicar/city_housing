@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire\AccountLogs;
 
+use App\Http\Livewire\DataTable\WithSorting;
 use Livewire\Component;
 use Spatie\Activitylog\Models\Activity;
 use Livewire\WithPagination;
 
 class AccountTableLogs extends Component
 {
-    use WithPagination;
+    use WithPagination, WithSorting;
 
     public $search = '';
     protected $listeners = ['userTableRefreshEvent' => '$refresh'];
@@ -20,7 +21,7 @@ class AccountTableLogs extends Component
             ->whereLike('event', $this->search)
             ->whereLike('description', $this->search)
             ->where('causer_id', auth()->user()->id)
-            ->latest()
+            ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(10);
         return view('livewire.account-logs.account-table-logs', ['logs' => $logs]);
     }
