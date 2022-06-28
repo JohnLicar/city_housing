@@ -12,7 +12,8 @@ class AccountTableLogs extends Component
     use WithPagination, WithSorting;
 
     public $search = '';
-    protected $listeners = ['userTableRefreshEvent' => '$refresh'];
+    public $start;
+    public $end;
 
     public function render()
     {
@@ -22,12 +23,17 @@ class AccountTableLogs extends Component
             ->whereLike('description', $this->search)
             ->where('causer_id', auth()->user()->id)
             ->orderBy($this->sortField, $this->sortDirection)
+            ->when($this->start, fn($query) => $query->whereDate('created_at', $this->start))
             ->paginate(10);
+
         return view('livewire.account-logs.account-table-logs', ['logs' => $logs]);
     }
+
 
     public function updatingSearch()
     {
         $this->resetPage();
     }
+
+   
 }
