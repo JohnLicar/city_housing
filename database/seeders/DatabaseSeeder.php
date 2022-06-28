@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RealHoldingSeeder::class,
             ApplicantSeeder::class,
-            ApplicantsRealHoldingSeeder::class,
+            // ApplicantsRealHoldingSeeder::class,
+            FamilyCompositionSeeder::class,
         ]);
         // $this->call();
     }

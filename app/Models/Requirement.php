@@ -9,7 +9,5 @@ class Requirement extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'description'
-    ];
+    protected $guarded = [];
 }

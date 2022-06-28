@@ -1,139 +1,100 @@
-<div>
-    <div class=" flex justify-between space-x-4 mb-3 ">
+<div class="mt-5 mb-5">
 
+    <div class="relative flex justify-between mb-5">
         <a href="{{ route('applicants.create') }}">
             <x-button class="flex">
-                <svg width="24" height="24" class="mr-2" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z"
-                        fill="currentColor" />
-                </svg>
+
                 {{ __('Add Applicants') }}
             </x-button>
         </a>
 
-        <x-input wire:model.debounce.300ms="search" id="search" class="right-0 w-1/3" type="search" name="search"
-            placeholder="Search User" :value="old('search')" />
+        <x-input wire:model.debounce.400ms="search" id="search" class="right-0 w-1/3 sm:w-1/2" type="text" name="search"
+            placeholder="Search" :value="old('search')" />
+        <div class="absolute top-4 right-3">
+            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </div>
     </div>
 
-    <div class="overflow-hidden mb-8 w-full rounded-lg border shadow-xs">
-        <div class="overflow-x-auto w-full">
-            {{-- <table class="w-full whitespace-no-wrap">
-                @if (!count($users) == '0')
-                <thead>
-                    <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 border-b">
-                        <th class="px-4 py-3">First Name</th>
-                        <th class="px-4 py-3">Middle Name</th>
-                        <th class="px-4 py-3">Last Name</th>
-                        <th class="px-4 py-3">Gender</th>
-                        <th class="px-4 py-3">Contact</th>
-                        <th class="px-4 py-3">Address</th>
-                        <th class="px-4 py-3">Email</th>
-                        <th class="px-4 py-3">Status</th>
-                        <th class="px-4 py-3">Action</th>
-                    </tr>
-                </thead>
-                @endif
+    <div class="container overflow-x-auto">
+        <x-table>
+            <x-slot name="head">
+                <x-table.heading sortable multi-column wire:click="sortBy('first_name')"
+                    :direction="$sorts['first_name'] ?? null">
+                    Applicant
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('birth_date')"
+                    :direction="$sorts['birth_date'] ?? null">
+                    Date of Birth
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('civil_status')"
+                    :direction="$sorts['civil_status'] ?? null">
+                    Civil Status
 
-                <tbody class="bg-white divide-y">
-
-                    @forelse ($users as $user)
-                    <tr class="text-gray-700">
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->first_name }}
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->middle_name ?? '' }}
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->last_name }}
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->gender }}
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->contact }}
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->address }}
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            {{ $user->email }}
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            @if ($user->approve)
-                            <span
-                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 text-white">
-                                Approved
-                            </span>
-                            @else
-                            <span
-                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
-                                Pending
-                            </span>
-                            @endif
-                        </td>
-
-                        <td class="px-4 py-3 text-sm">
-                            <div class="flex item-center justify-between">
-                                <div class="w-4 transform hover:text-purple-500 hover:scale-110 mr-5">
-                                    <a href="{{ route('users.edit', $user) }}">
-                                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                        </svg>
-                                    </a>
-                                </div>
-
-                                <div class="w-4 transform text-red-600 hover:text-red-900 hover:scale-110">
-                                    <a href="#" class="w-4 transform text-red-600 hover:text-red-900 hover:scale-110">
-                                        <form action="{{ route('users.destroy', $user) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" onclick="return confirm('Are you sure?')"
-                                                class="w-4 h-4">
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M17 5V4C17 2.89543 16.1046 2 15 2H9C7.89543 2 7 2.89543 7 4V5H4C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H5V18C5 19.6569 6.34315 21 8 21H16C17.6569 21 19 19.6569 19 18V7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H17ZM15 4H9V5H15V4ZM17 7H7V18C7 18.5523 7.44772 19 8 19H16C16.5523 19 17 18.5523 17 18V7Z"
-                                                        fill="currentColor" />
-                                                    <path d="M9 9H11V17H9V9Z" fill="currentColor" />
-                                                    <path d="M13 9H15V17H13V9Z" fill="currentColor" />
-                                                </svg>
-                                            </button>
-                                        </form>
-
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @empty
-                    <div class="flex justify-center">
-                        <div class="my-5">
-                            <img class="w-24 h-24" src="{{ asset('images/empty.svg' )}}" alt="Empty" />
-                            <div class="mr-8">
-                                No available Chairman
-                            </div>
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('office')"
+                    :direction="$sorts['office'] ?? null">
+                    Office
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('income_per_month')"
+                    :direction="$sorts['income_per_month'] ?? null">
+                    Income Per Month
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy('income_per_month')"
+                    :direction="$sorts['income_per_month'] ?? null">
+                    Added By
+                </x-table.heading>
+                <x-table.heading sortable multi-column wire:click="sortBy(' created_at')"
+                    :direction="$sorts[' created_at'] ?? null">
+                    Added On
+                </x-table.heading>
+            </x-slot>
+            <x-slot name="body">
+                @forelse ($applicants as $applicant)
+                <x-table.row wire:loading.class="opacity-50">
+                    <x-table.cell class="cell">
+                        {{ $applicant->info->full_name }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $applicant->info->birth_date }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $applicant->info->civil_status }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $applicant->info->office }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $applicant->info->income_per_month }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        Licar Orion
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $applicant->created_at->format('F j, Y h:i:s A') }}
+                    </x-table.cell>
+                </x-table.row>
+                @empty
+                <td class="py-6" colspan="5">
+                    <div class="flex flex-col justify-center place-items-center align-center">
+                        <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
+                        <div class="">
+                            <p class="mt-5 text-gray-500">
+                                No data available ...
+                            </p>
                         </div>
                     </div>
-                    @endforelse
-
-                </tbody>
-            </table> --}}
-        </div>
-        <div
-            class="px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase bg-gray-50 border-t sm:grid-cols-9">
-            {{-- {{ $users->links() }} --}}
+                </td>
+                @endforelse
+            </x-slot>
+        </x-table>
+        <div class="mt-5 mb-5">
+            {{ $applicants->links() }}
         </div>
     </div>
+
 </div>

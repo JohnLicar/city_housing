@@ -28,7 +28,6 @@ class FamilyCompositionFactory extends Factory
             'first_name'    => $first_name,
             'middle_name'   => $this->faker->lastName,
             'last_name'     => $this->faker->lastName,
-            'suffix'        => $this->faker->suffix,
             'relation'      => $relation,
             'civil_status'  => $civilStatus,
             'age'           => $this->faker->numberBetween(1, 100),

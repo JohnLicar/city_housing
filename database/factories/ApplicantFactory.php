@@ -22,7 +22,7 @@ class ApplicantFactory extends Factory
     {
 
         return [
-            'applicants_info_id' => ApplicantsInfo::factory(),
+            'applicant_info_id' => ApplicantsInfo::factory(),
             'spouse_id' => Spouse::factory(),
             'housing_project_id' => HousingProject::factory(), //ray pa mag ayad factory
             // 'real_holding_id' => RealHolding::factory(),

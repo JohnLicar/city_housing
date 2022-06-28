@@ -18,4 +18,13 @@ class HousingProject extends Model
     // ];
 
     protected $guarded = [];
+
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('project', 'like', '%' . $search . '%')
+            ->OrWhere('location', 'like', '%' . $search . '%')
+            ->OrWhere('description', 'like', '%' . $search . '%');
+    }
 }

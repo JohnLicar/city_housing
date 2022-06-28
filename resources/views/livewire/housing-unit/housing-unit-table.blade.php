@@ -98,8 +98,8 @@
                 </tbody>
             </table>
 
-            <div class="mt-4">
-                {{-- {{ $logs->links() }} --}}
+            <div class="my-4">
+                {{ $housings->links() }}
             </div>
         </div>
     </div>

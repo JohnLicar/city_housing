@@ -18,6 +18,7 @@ class CreateUser extends ModalComponent
     public $contact;
     public $role;
     public $email;
+    public $start;
 
 
     protected $rules = [

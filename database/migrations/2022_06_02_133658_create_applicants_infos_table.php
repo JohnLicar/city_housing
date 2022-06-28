@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('brgy_origin');
             $table->string('birth_date');
             $table->string('civil_status');
-            $table->string('office');
+            $table->string('office')->nullable();
             $table->string('income_per_month');
             $table->softDeletes();
             $table->timestamps();

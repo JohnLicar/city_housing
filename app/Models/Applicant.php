@@ -11,12 +11,18 @@ class Applicant extends Model
 {
     use HasFactory, SoftDeletes, CascadeSoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'applicant_info_id',
+        'spouse_id',
+        'housing_project_id',
+        // 'real_holding_id',
+        'application_status'
+    ];
     protected $cascadeDeletes = ['info', 'spouse', 'family_composition'];
 
     public function info()
     {
-        return $this->belongsTo(ApplicantsInfo::class, 'applicants_info_id', 'id');
+        return $this->belongsTo(ApplicantsInfo::class, 'applicant_info_id', 'id');
     }
 
     public function spouse()
@@ -37,5 +43,11 @@ class Applicant extends Model
     public function real_holding()
     {
         return $this->belongsTo(RealHolding::class, 'real_holding_id', 'id');
+    }
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->whereRelation('info', 'first_name', 'like', '%' . $search . '%');
     }
 }

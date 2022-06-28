@@ -27,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
         Builder::macro('whereLike', function ($field, $string) {
             return $string ? $this->orWhere($field, 'like', '%' . $string . '%') : $this;
         });
+
+
+        // Builder::macro('hasWhereLike', function ($field, $string, $relation) {
+        //     return $string ? $this->whereRelation($relation, $field, 'like', '%' . $string . '%') : $this;
+        // });
     }
 }

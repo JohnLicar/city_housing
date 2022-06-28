@@ -7,7 +7,14 @@ use Livewire\Component;
 class AddFamilyComposition extends Component
 {
 
-    public $familyComposition = [];
+    public $familyCompositions = [];
+
+
+    public function mount()
+    {
+        $this->familyCompositions[] = [];
+    }
+
 
     /**
      * Write code on Method
@@ -16,7 +23,7 @@ class AddFamilyComposition extends Component
      */
     public function addItem()
     {
-        $this->familyComposition[] = ['inventory_id' => '', 'quantity' => ''];
+        $this->familyCompositions[] = [];
     }
 
     public function render()

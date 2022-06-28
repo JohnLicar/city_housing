@@ -28,6 +28,10 @@ class ApplicantsInfoFactory extends Factory
             'office' => 'Tacloban City Housing Office',
             'brgy_origin' => 'Brgy. ' . $this->faker->numberBetween(1, 200),
             'birth_date' => $this->faker->date('Y-m-d', '2000-08-10'),
+            'place_of_birth' => $this->faker->address(),
+            'citizenship' => "Filipino",
+            'tin_no' => $this->faker->numberBetween(100000000, 999999999),
+            'govt_id' => $this->faker->numberBetween(100000000, 999999999),
             'civil_status' => $civilStatus,
             'income_per_month' => $this->faker->numberBetween(3500, 25000),
             //

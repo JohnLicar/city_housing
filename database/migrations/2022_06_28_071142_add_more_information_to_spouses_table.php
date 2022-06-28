@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('spouses', function (Blueprint $table) {
-            $table->id();
-            $table->string('spouse_first_name');
-            $table->string('spouse_middle_name')->nullable();
-            $table->string('spouse_last_name');
-            $table->timestamps();
+        Schema::table('spouses', function (Blueprint $table) {
+            $table->string('spouse_birth_date');
+            $table->string('spouse_place_of_birth');
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spouses');
+        Schema::table('spouses', function (Blueprint $table) {
+            //
+        });
     }
 };
