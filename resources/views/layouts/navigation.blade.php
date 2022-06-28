@@ -97,7 +97,7 @@
 
                 <li class="relative px-6 py-2">
                     <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.*')"
-                        class="{{ request()->routeIs('users.*') ? 'text-[#5283F1]' : 'text-[#525252]' }}">
+                        class="{{ request()->routeIs('roles.*') ? 'text-[#5283F1]' : 'text-[#525252]' }}">
                         <x-slot name="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                 fill="currentColor">

@@ -18,12 +18,15 @@ class AccountTableLogs extends Component
     public function render()
     {
         $logs = Activity::query()
-            ->whereLike('log_name', $this->search)
-            ->whereLike('event', $this->search)
-            ->whereLike('description', $this->search)
+            ->when($this->start, fn($query) => $query->whereDate('created_at', '>=', $this->start))
+            ->when($this->end, fn($query) => $query->whereDate('created_at', '<=', $this->end))
+            ->where(fn($query) => 
+               $query->whereLike('log_name', $this->search)
+                ->whereLike('event', $this->search)
+                ->whereLike('description', $this->search)
+            )
             ->where('causer_id', auth()->user()->id)
             ->orderBy($this->sortField, $this->sortDirection)
-            ->when($this->start, fn($query) => $query->whereDate('created_at', $this->start))
             ->paginate(10);
 
         return view('livewire.account-logs.account-table-logs', ['logs' => $logs]);
@@ -35,5 +38,9 @@ class AccountTableLogs extends Component
         $this->resetPage();
     }
 
+    public function resetFilter(){
+        $this->start = null;
+        $this->end = null;
+    }
    
 }
