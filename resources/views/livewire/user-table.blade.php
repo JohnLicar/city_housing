@@ -110,7 +110,7 @@
             </table>
         </div>
         <div class="mt-5">
-            {{ $users->onEachSide(4)->links() }}
+            {{ $users->onEachSide(0)->links() }}
         </div>
     </div>
 

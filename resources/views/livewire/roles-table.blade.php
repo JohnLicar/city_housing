@@ -1,17 +1,12 @@
 <div class="mt-5">
 
     <div class=" flex justify-between relative mb-3 ">
-
-        <a href="{{ route('roles.create') }}">
-            <x-button class="bg-blue-1000 px-6">
-
-                {{ __('New Role') }}
-            </x-button>
-        </a>
-
+        <x-button wire:click="$emit('openModal', 'role.create-role')">
+            {{ __('New Role') }}
+        </x-button>
         <div class="relative w-1/3">
-            <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full sm:w-1/2" type="text"
-                name="search" :value="old('search')" />
+            <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full" type="text" name="search"
+                :value="old('search')" />
             <x-floating-label for="search" :value="__('Search')" />
         </div>
         <div class="absolute top-3 right-3">
@@ -50,18 +45,32 @@
                         {{ $role->name }}
                     </x-table.cell>
                     <x-table.cell class="cell">
-                        @foreach ($role->permissions as $permission)
-                            <li>
-                                {{ $permission->name }}
-                            </li>
-                        @endforeach
+                        @if ($role->name !== 'Admin')
+                            @foreach ($role->permissions as $permission)
+                                <li>
+                                    {{ $permission->name }}
+                                </li>
+                            @endforeach
+                        @else
+                            <p>All permissions are granted to this role by default</p>
+                        @endif
                     </x-table.cell>
                     <x-table.cell class="cell">
                         {{ $role->created_at->format('F j, Y h:i:s A') }}
                     </x-table.cell>
-                    <x-table.cell>
-                        <x-button>Update</x-button>
-                        <x-button>Delete</x-button>
+                    <x-table.cell class="whitespace-nowrap">
+                        @if ($role->name !== 'Admin')
+                            <x-button.text-button
+                                wire:click="$emit('openModal', 'role.edit-role', {{ json_encode(['role' => $role]) }})">
+                                Edit
+                            </x-button.text-button>
+                            <x-button.text-button btnType="error" wire:click="$emit('openModal', 'role.delete-role', {{ json_encode(['selectedRole' => $role]) }})">
+                                Delete
+                            </x-button.text-button>
+                        @else
+                            <p>No actions allowed</p>
+                        @endif
+                        {{-- <x-button>Delete</x-button> --}}
                     </x-table.cell>
                 </x-table.row>
             @empty

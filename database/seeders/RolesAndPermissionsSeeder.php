@@ -40,10 +40,10 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'role_edit']);
         Permission::create(['name' => 'role_delete']);
         Permission::create(['name' => 'role_access']);
-        Permission::create(['name' => 'housingprojct_create']);
-        Permission::create(['name' => 'ousingprojct_update']);
-        Permission::create(['name' => 'housingprojct_delete']);
-        Permission::create(['name' => 'housingprojct_access']);
+        Permission::create(['name' => 'housingproject_create']);
+        Permission::create(['name' => 'housingproject_update']);
+        Permission::create(['name' => 'housingproject_delete']);
+        Permission::create(['name' => 'housingproject_access']);
         Permission::create(['name' => 'user_create']);
         Permission::create(['name' => 'user_update']);
         Permission::create(['name' => 'user_delete']);

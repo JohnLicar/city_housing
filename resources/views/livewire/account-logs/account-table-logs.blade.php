@@ -38,7 +38,7 @@
         </x-button-dropdown.button-dropdown>
 
         <div class="relative w-1/3">
-            <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full sm:w-1/2" type="text"
+            <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full" type="text"
                 name="search" :value="old('search')" />
             <x-floating-label for="search" :value="__('Search')" />
         </div>
@@ -101,7 +101,7 @@
             </x-slot>
         </x-table>
         <div class="mt-5 mb-5">
-            {{ $logs->links() }}
+            {{ $logs->onEachSide(0)->links() }}
         </div>
     </div>
 

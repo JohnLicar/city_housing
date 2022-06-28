@@ -11,6 +11,9 @@ class RolesTable extends Component
     use WithSorting;
 
     public $search = '';
+
+    protected $listeners = ['roleUpdated' => '$refresh'];
+     
     public function render()
     {
         $roles = Role::query()
