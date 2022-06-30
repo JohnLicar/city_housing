@@ -1,23 +1,37 @@
 <div class="mt-5 mb-5">
 
-    <div class="relative flex justify-between mb-5">
-        <a href="{{ route('applicants.create') }}">
-            <x-button class="flex">
+    <div class="relative flex justify-between">
 
-                {{ __('Add Applicants') }}
-            </x-button>
-        </a>
-
-        <x-input wire:model.debounce.400ms="search" id="search" class="right-0 w-1/3 sm:w-1/2" type="text" name="search"
-            placeholder="Search" :value="old('search')" />
-        <div class="absolute top-4 right-3">
-            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clip-rule="evenodd"></path>
-            </svg>
+        <div>
+            <a href="{{ route('applicants.create') }}">
+                <x-button class="mt-1.5">
+                    {{ __('Add Applicants') }}
+                </x-button>
+            </a>
         </div>
+
+
+
+        <div class="right-0 w-3/4 sm:w-1/2 flex justify-end gap-3">
+            <a>
+                <button wire:click='$emit("openModal", "filter.filter-modal")' class="mt-1.5 px-4 py-2 text-sm font-medium leading-5 text-center
+                text-white transition-colors duration-150 bg-blue-1000 border border-transparent rounded-lg active:bg-blue-900
+                hover:bg-blue-700 focus:outline-none focus:ring'">
+                    {{ __('Filter') }}
+                </button>
+            </a>
+            <x-input wire:model.debounce.400ms="search" id="search" class="righ-0 w-1/3 mb-4" type="text" name="search"
+                placeholder="Search" :value="old('search')" />
+            <div class="absolute top-4 right-3">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </div>
+        </div>
+
     </div>
 
     <div class="container overflow-x-auto">
@@ -52,6 +66,10 @@
                     :direction="$sorts[' created_at'] ?? null">
                     Added On
                 </x-table.heading>
+
+                <x-table.heading sortable multi-column>
+                    Action
+                </x-table.heading>
             </x-slot>
             <x-slot name="body">
                 @forelse ($applicants as $applicant)
@@ -76,6 +94,28 @@
                     </x-table.cell>
                     <x-table.cell class="cell">
                         {{ $applicant->created_at->format('F j, Y h:i:s A') }}
+                    </x-table.cell>
+
+                    <x-table.cell class="cell">
+                        <div class="flex justify-between ">
+                            <div
+                                class="w-full font-medium transform text-blue-1000 hover:text-blue-900 hover:scale-110 ">
+                                <a href="{{ route('applicants.show', $applicant) }}">
+                                    View Detail
+                                </a>
+                            </div>
+                            <div class="w-full font-medium transform hover:text-purple-500 hover:scale-110 ">
+                                <button>
+                                    Edit
+                                </button>
+                            </div>
+
+                            <div class="w-full font-medium text-red-600 transform hover:text-red-900 hover:scale-110">
+                                <button type="submit">
+                                    Move to Trash
+                                </button>
+                            </div>
+                        </div>
                     </x-table.cell>
                 </x-table.row>
                 @empty

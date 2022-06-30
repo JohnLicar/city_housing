@@ -49,7 +49,6 @@ class ApplicantsController extends Controller
             'applicant_info_id' => $applicant_info->id,
             'spouse_id' => $spouse->id,
             'housing_project_id' => $request->housing_project_id,
-
         ]);
 
         foreach ($request->familyCompositions as $family) {
@@ -77,7 +76,8 @@ class ApplicantsController extends Controller
      */
     public function show(Applicant $applicant)
     {
-        //
+        $applicant->load('info', 'spouse', 'housing_project', 'family_composition');
+        return view('applicants.show', compact('applicant'));
     }
 
     /**

@@ -48,6 +48,8 @@ class Applicant extends Model
     public static function search($search)
     {
         return empty($search) ? static::query()
-            : static::query()->whereRelation('info', 'first_name', 'like', '%' . $search . '%');
+            : static::query()
+            ->whereRelation('info', 'first_name', 'like', '%' . $search . '%')
+            ->orWhereRelation('info', 'last_name', 'like', '%' . $search . '%');
     }
 }

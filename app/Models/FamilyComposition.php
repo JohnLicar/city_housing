@@ -9,4 +9,13 @@ class FamilyComposition extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function getFullNameAttribute()
+    {
+        return sprintf(
+            '%s %s',
+            $this->first_name,
+            $this->last_name
+        );
+    }
 }

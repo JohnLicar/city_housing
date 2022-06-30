@@ -134,7 +134,8 @@
 
                                 <div class="mt-4">
                                     <div class="relative">
-                                        <x-floating-input type="text" id="birth_date" name="birth_date"
+
+                                        <x-floating-input datepicker type="text" id="birth_date" name="birth_date"
                                             :value="old('birth_date')" required />
                                         <x-floating-label for="birth_date" :value="__('Birthday')" />
                                     </div>
