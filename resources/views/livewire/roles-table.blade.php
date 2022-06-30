@@ -30,8 +30,13 @@
             </x-table.heading>
             <x-table.heading>
                 Permissions </x-table.heading>
+            <x-table.heading>
+                No. of Users
+            </x-table.heading>
             <x-table.heading sortable wire:click="sortBy('created_at')" :direction="$sortField == 'created_at' ? $sortDirection : null">
                 Added On </x-table.heading>
+            <x-table.heading sortable wire:click="sortBy('updated_at')" :direction="$sortField == 'updated_at' ? $sortDirection : null">
+                Updated On </x-table.heading>
             <x-table.heading>
                 Actions </x-table.heading>
         </x-slot>
@@ -52,11 +57,18 @@
                                 </li>
                             @endforeach
                         @else
-                            <p>All permissions are granted to this role by default</p>
+                            <p>All permissions are granted to this role by the system. <br /> <span
+                                    class="text-red-500">Please be careful when assigning this role to a user.<span></p>
                         @endif
                     </x-table.cell>
                     <x-table.cell class="cell">
+                        {{ $role->users_count }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
                         {{ $role->created_at->format('F j, Y h:i:s A') }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $role->updated_at->format('F j, Y h:i:s A') }}
                     </x-table.cell>
                     <x-table.cell class="whitespace-nowrap">
                         @if ($role->name !== 'Admin')
@@ -64,9 +76,13 @@
                                 wire:click="$emit('openModal', 'role.edit-role', {{ json_encode(['role' => $role]) }})">
                                 Edit
                             </x-button.text-button>
-                            <x-button.text-button btnType="error" wire:click="$emit('openModal', 'role.delete-role', {{ json_encode(['selectedRole' => $role]) }})">
-                                Delete
-                            </x-button.text-button>
+
+                            @if ($role->id !== 1)
+                                <x-button.text-button btnType="error"
+                                    wire:click="$emit('openModal', 'role.delete-role', {{ json_encode(['selectedRole' => $role]) }})">
+                                    Delete
+                                </x-button.text-button>
+                            @endif
                         @else
                             <p>No actions allowed</p>
                         @endif

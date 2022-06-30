@@ -6,6 +6,10 @@
 @php
 
 switch ($btnType) {
+    case 'info':
+        $class = 'bg-blue-500 active:bg-blue-600 hover:bg-blue-700';
+        break;
+
     case 'success':
         $class = 'bg-green-1000 active:bg-green-900 hover:bg-green-700';
         break;
@@ -15,7 +19,7 @@ switch ($btnType) {
         break;
 
     case 'warning':
-        $class = 'bg-orange-1000 active:bg-orange-900 hover:bg-orange-700';
+        $class = 'bg-orange-500 active:bg-orange-700 hover:bg-orange-600';
         break;
 
     case 'secondary':
@@ -30,6 +34,6 @@ switch ($btnType) {
 @endphp
 
 <button {{ $attributes }}
-    {{$attributes->merge(['class' => 'px-4 py-2 text-sm font-medium leading-5 text-center text-white transition-colors duration-150  border border-transparent rounded-lg focus:outline-none focus:ring '.$class.''])}}>
+    {{$attributes->merge(['class' => 'px-4 py-2 text-sm font-medium leading-5 text-center text-white transition-colors duration-150  border border-transparent rounded-lg focus:outline-none focus:ring-0 '.$class.''])}}>
     {{ $slot }}
 </button>

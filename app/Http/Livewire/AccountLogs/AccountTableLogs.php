@@ -38,6 +38,16 @@ class AccountTableLogs extends Component
         $this->resetPage();
     }
 
+    public function updatedStart()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedEnd()
+    {
+        $this->resetPage();
+    }
+
     public function resetFilter(){
         $this->start = null;
         $this->end = null;

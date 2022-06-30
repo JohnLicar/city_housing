@@ -30,12 +30,15 @@ class EditRole extends ModalComponent
     public function updateRole()
     {
         $this->authorize('role_edit');
+
         $role = Role::find($this->role['id'])->first();
         $role->syncPermissions($this->selectedPermissions);
         $role->update([
             'name' => $this->role['name']
         ]);
+
         $this->emit('roleUpdated');
         $this->forceClose()->closeModal();
+
     }
 }

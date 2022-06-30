@@ -18,12 +18,12 @@ class RolesTable extends Component
     {
         $roles = Role::query()
             ->with(['permissions:id,name'])
+            ->withCount('users')
             ->where(fn($query) => 
                 $query->whereLike('name', $this->search)
             )
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(10);
-
         return view('livewire.roles-table', compact('roles'));
     }
 }

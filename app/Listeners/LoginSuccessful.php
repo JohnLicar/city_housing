@@ -29,6 +29,6 @@ class LoginSuccessful
         activity('Account Login')
             ->causedBy($event->user)
             ->event('Login Success')
-            ->log('You logged in to your account successfully!');
+            ->log('Account logged in successfully!');
     }
 }

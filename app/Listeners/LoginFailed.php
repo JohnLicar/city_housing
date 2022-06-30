@@ -26,6 +26,9 @@ class LoginFailed
      */
     public function handle(Failed $event)
     {
-        activity('Account Login')->causedBy($event->user)->event('Login Failed')->log('You attempted to login your account');
+        activity('Account Login')
+        ->causedBy($event->user)
+        ->event('Login Failed')
+        ->log('Failed login attempt');
     }
 }

@@ -26,6 +26,9 @@ class LogoutListener
      */
     public function handle(Logout $event)
     {
-        activity('Account Logout')->causedBy($event->user)->event('Logout')->log('You\'ve logged out your account!');
+        activity('Account Logout')
+        ->causedBy($event->user)
+        ->event('Logout')
+        ->log('Account was logged out');
     }
 }

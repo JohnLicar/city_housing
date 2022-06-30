@@ -98,12 +98,11 @@
               </div>
 
 
-
             </div>
             <div class="flex items-center justify-end mt-4">
-              <x-back-button href="{{ route('users.index') }}" class="ml-3">
+              <x-button.text-button btnType="secondary" href="{{ route('users.index') }}" class="ml-3">
                 {{ __('Back') }}
-              </x-back-button>
+              </x-button.text-button>
               <x-button class="ml-3">
                 {{ __('Create') }}
               </x-button>

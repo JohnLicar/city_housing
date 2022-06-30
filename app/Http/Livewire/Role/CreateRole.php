@@ -32,6 +32,7 @@ class CreateRole extends ModalComponent
             'name' => $this->role
         ]);
         $role->syncPermissions($this->selectedPermissions);
+        $this->emit('showToastNotification', ['type' => 'success', 'message' => 'Role created successfully!', 'title' => 'Success']);
         $this->emit('roleUpdated');
         $this->forceClose()->closeModal();
     }

@@ -45,6 +45,7 @@
     </div>
     <script src="{{ asset('js/flowbite.js') }}"></script>
     @livewireScripts
+    @livewire('toast.toast-notification')
     @stack('scripts')
 
 </body>

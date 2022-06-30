@@ -40,6 +40,8 @@ class DeleteRole extends ModalComponent
 
         Role::destroy($this->selectedRole['id']);
         $this->emit('roleUpdated');
+        $this->emit('showToastNotification', ['type' => 'success', 'message' => 'Role has been deleted successfully!', 'title' => 'Successfully Deleted']);
+
         $this->forceClose()->closeModal();
 
     }
