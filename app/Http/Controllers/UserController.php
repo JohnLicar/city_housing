@@ -52,9 +52,10 @@ class UserController extends Controller
 
         $user = User::create($request->validated());
         $user->assignRole($request->role);
-        toast('User Created Succesfully', 'success');
+        // toast('User Created Succesfully', 'success');
+        session()->flash('livewire-toast', ['type' => 'success', 'title' => 'User Created', 'message' => 'User has been created successfully!']);
 
-        activity()
+        activity('Register Account')
             ->causedBy(auth()->user()->id)
             ->event('User Created')
             ->log('Created a user');

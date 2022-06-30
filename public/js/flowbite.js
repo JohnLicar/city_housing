@@ -2688,12 +2688,14 @@ var Dropdown = /*#__PURE__*/function () {
   function Dropdown() {
     var targetElement = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     var triggerElement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var preventBackdropClose = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
     dropdown_classCallCheck(this, Dropdown);
 
     this._targetEl = targetElement;
     this._triggerEl = triggerElement;
+    this._preventBackdropClose = preventBackdropClose === 'true' ? true : false;
     this._options = dropdown_objectSpread(dropdown_objectSpread({}, dropdown_Default), options);
     this._popperInstance = this._createPopperInstace();
     this._visible = false;
@@ -2725,7 +2727,8 @@ var Dropdown = /*#__PURE__*/function () {
         }]
       });
     }
-  }, {
+  },
+   {
     key: "_handleClickOutside",
     value: function _handleClickOutside(ev, targetEl) {
       var clickedEl = ev.target;
@@ -2736,7 +2739,8 @@ var Dropdown = /*#__PURE__*/function () {
 
       document.body.removeEventListener('click', this._handleClickOutside, true);
     }
-  }, {
+  }, 
+  {
     key: "toggle",
     value: function toggle() {
       if (this._visible) {
@@ -2765,9 +2769,12 @@ var Dropdown = /*#__PURE__*/function () {
         });
       });
 
-      document.body.addEventListener('click', function (ev) {
-        _this2._handleClickOutside(ev, _this2._targetEl);
-      }, true); // Update its position
+      // console.log(typeof this._preventBackdropClose)
+      if(!this._preventBackdropClose){
+        document.body.addEventListener('click', function (ev) {
+          _this2._handleClickOutside(ev, _this2._targetEl);
+        }, true); // Update its position
+      }
 
       this._popperInstance.update();
 
@@ -2806,7 +2813,9 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-dropdown-toggle]').forEach(function (triggerEl) {
     var targetEl = document.getElementById(triggerEl.getAttribute('data-dropdown-toggle'));
     var placement = triggerEl.getAttribute('data-dropdown-placement');
-    new Dropdown(targetEl, triggerEl, {
+    var preventBackdropClose = triggerEl.getAttribute('backdrop-static')
+    console.log(preventBackdropClose)
+    new Dropdown(targetEl, triggerEl, preventBackdropClose,  {
       placement: placement ? placement : dropdown_Default.placement
     });
   });

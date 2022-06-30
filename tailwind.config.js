@@ -1,6 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 const Color = require("color");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
     content: [
@@ -176,6 +177,7 @@ module.exports = {
             fontFamily: {
                 sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
+            colors: colors.orange
         },
     },
     variants: {

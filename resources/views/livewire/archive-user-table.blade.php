@@ -3,8 +3,7 @@
     <div class=" flex justify-between space-x-4 mb-3 ">
 
         <a href="{{ route('users.create') }}">
-            <x-button class="bg-blue-1000 px-6">
-
+            <x-button>
                 {{ __('New User') }}
             </x-button>
         </a>
