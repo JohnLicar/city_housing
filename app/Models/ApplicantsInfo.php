@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicantsInfo extends Model
 {
     use HasFactory;
+    // protected $appends = ['full_name'];
+
     protected $fillable = [
         'first_name',
         'middle_name', // nullable

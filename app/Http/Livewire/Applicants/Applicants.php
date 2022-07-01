@@ -32,16 +32,17 @@ class Applicants extends Component
 
     public function updateIncomePerMonth($value)
     {
-
         $this->income_per_month = $value;
         $this->emitSelf('render');
     }
+
     public function updateStart($value)
     {
 
         $this->start = $value;
         $this->emitSelf('render');
     }
+    
     public function updateOffice($value)
     {
 
@@ -68,6 +69,8 @@ class Applicants extends Component
 
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(5);
+
+            // dd($applicants);
         return view('livewire.applicants.applicants', compact('applicants'));
     }
 

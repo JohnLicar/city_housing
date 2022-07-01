@@ -133,7 +133,7 @@
             </x-slot>
         </x-table>
         <div class="mt-5 mb-5">
-            {{ $applicants->links() }}
+            {{ $applicants->onEachSide(0)->links() }}
         </div>
     </div>
 

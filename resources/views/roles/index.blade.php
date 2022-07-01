@@ -3,7 +3,7 @@
     <div class="flex items-center p-4 bg-red-1000 sm:w-full w-2/5 rounded-lg shadow-xs text-white">
       <div class=" text-base">
         <div class="ml-3 font-medium leading-5">
-          Admin
+          Roles
         </div>
         <div class="text-9xl">
           {{ $admins }}

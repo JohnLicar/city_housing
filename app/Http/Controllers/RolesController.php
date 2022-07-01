@@ -15,8 +15,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $users = User::role('User')->count();
-        $admins = User::role('Admin')->count();
+        $users = 0;
+        $admins = 0;
         return view('roles.index', compact('users', 'admins'));
     }
 
