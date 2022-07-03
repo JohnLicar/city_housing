@@ -76,6 +76,7 @@ class User extends Authenticatable
         return sprintf(
             '%s %s',
             $this->first_name,
+            $this->middle_name,
             $this->last_name
         );
     }

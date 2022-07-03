@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ApplicantSeeder::class,
             // ApplicantsRealHoldingSeeder::class,
             FamilyCompositionSeeder::class,
+            RequirementSeeder::class,
         ]);
         // $this->call();
     }

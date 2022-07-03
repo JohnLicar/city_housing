@@ -9,16 +9,8 @@ class HousingProject extends Model
 {
     use HasFactory;
 
-
-    // protected $fillable = [
-    //     'location',
-    //     'project',
-    //     'description',
-
-    // ];
-
     protected $guarded = [];
-
+    protected $table = 'housing_projects';
 
     public static function search($search)
     {

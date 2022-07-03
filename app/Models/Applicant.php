@@ -9,7 +9,7 @@ use Dyrynda\Database\Support\CascadeSoftDeletes;
 
 class Applicant extends Model
 {
-    use HasFactory, SoftDeletes, CascadeSoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'applicant_info_id',
@@ -30,9 +30,17 @@ class Applicant extends Model
         return $this->belongsTo(Spouse::class, 'spouse_id', 'id');
     }
 
+
     public function family_composition()
     {
-        return $this->hasMany(FamilyComposition::class); //Rule alp
+        return $this->hasManyThrough(
+            FamilyComposition::class,
+            Applicant::class,
+            'applicant_info_id', // Foreign key on the environments table...
+            'applicant_id', // Foreign key on the deployments table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        ); //Rule alp
     }
 
     public function housing_project()
@@ -45,11 +53,21 @@ class Applicant extends Model
         return $this->belongsTo(RealHolding::class, 'real_holding_id', 'id');
     }
 
+    public function requirements()
+    {
+        return $this->belongsToMany(Requirement::class, 'applicants_requirments');
+    }
+
     public static function search($search)
     {
         return empty($search) ? static::query()
             : static::query()
             ->whereRelation('info', 'first_name', 'like', '%' . $search . '%')
             ->orWhereRelation('info', 'last_name', 'like', '%' . $search . '%');
+    }
+
+    public function scopeGetTrashed($query)
+    {
+        $query->onlyTrashed();
     }
 }

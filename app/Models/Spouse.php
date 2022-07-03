@@ -17,4 +17,15 @@ class Spouse extends Model
         'spouse_place_of_birth',
 
     ];
+
+
+    public function getFullNameAttribute()
+    {
+        return sprintf(
+            '%s %s',
+            $this->spouse_first_name,
+            $this->spouse_middle_name,
+            $this->spouse_last_name
+        );
+    }
 }

@@ -6,31 +6,30 @@ use LivewireUI\Modal\ModalComponent;
 
 class FilterModal extends ModalComponent
 {
-    public $civil_status;
-    public $income_per_month;
-    public $start;
-    public $office;
+    public $filterable = [
+        'civil_status' => '',
+        'start_income_per_month'  => '',
+        'end_income_per_month'  => '',
+        'start'  => '',
+        'end'  => '',
+        'office'  => '',
+        'startAge'  => '',
+        'ednAge'  => '',
+    ];
     public function render()
     {
         return view('livewire.filter.filter-modal');
     }
 
-    public function updatedCivilStatus($value)
+
+    public function filterApplicant()
     {
-        $this->emit('civilStatus', $value);
+        $this->emit('filter', $this->filterable);
     }
 
-    public function updatedIncomePerMonth($value)
+    public function resetFilter()
     {
-        $this->emit('income_per_month', $value);
-    }
-
-    public function updatedStart($value)
-    {
-        $this->emit('start', $value);
-    }
-    public function updatedOffice($value)
-    {
-        $this->emit('start', $value);
+        $this->reset();
+        $this->emit('reset', $this->filterable);
     }
 }

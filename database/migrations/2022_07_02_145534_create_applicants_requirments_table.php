@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('applicants_requirement', function (Blueprint $table) {
+        Schema::create('applicants_requirments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('requirements_id')->constrained('requirements');
             $table->foreignId('applicant_id')->constrained('applicants');
+            $table->foreignId('requirement_id')->constrained('requirements');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applicants_requirement');
+        Schema::dropIfExists('applicants_requirments');
     }
 };

@@ -24,7 +24,7 @@ class ConfirmDeleteModal extends ModalComponent
     public function restoreDelete()
     {
         if ($this->archive == "restore") {
-            User::onlyTrashed()->where('id', $this->user->id)->restore();
+            $this->user->restore();
         } elseif ($this->archive == "delete") {
             $this->authorize('user_delete');
             $this->user->delete();

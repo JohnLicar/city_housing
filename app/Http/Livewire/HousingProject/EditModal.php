@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\HousingUnit;
+namespace App\Http\Livewire\HousingProject;
 
 use App\Models\HousingProject;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -24,7 +24,7 @@ class EditModal extends ModalComponent
 
     public function mount(HousingProject $housingproject)
     {
-        $this->authorize('housingprojct_update');
+        // $this->authorize('housingprojct_update');
         $housingprojects = $housingproject;
         $this->project =   $housingprojects->project;
         $this->location =   $housingprojects->location;
@@ -38,6 +38,6 @@ class EditModal extends ModalComponent
 
     public function render()
     {
-        return view('livewire.housing-unit.edit-modal');
+        return view('livewire.housing-project.edit-modal');
     }
 }

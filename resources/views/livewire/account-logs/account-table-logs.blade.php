@@ -1,12 +1,9 @@
 <div class="mt-5 mb-5">
-
-
     <div class="relative flex justify-end mb-5">
-
         <x-button-dropdown.button-dropdown class="mr-2">
             Filter Data
             <x-slot name="content">
-                <div class="px-4 py-3 text-sm bg-gray-100 text-gray-900 dark:text-white">
+                <div class="px-4 py-3 text-sm text-gray-900 bg-gray-100 dark:text-white">
                     <p class="text-base">Date Range</p>
                     <div class="font-medium truncate">Date from and to filter</div>
                 </div>
@@ -19,7 +16,7 @@
                                 placeholder="Select date">
                         </div>
                         <div class="mx-2 mt-3.5">
-                            <span >to</span>
+                            <span>to</span>
                         </div>
                         <div class="flex flex-col">
                             <span>To</span>
@@ -38,8 +35,8 @@
         </x-button-dropdown.button-dropdown>
 
         <div class="relative w-1/3">
-            <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full" type="text"
-                name="search" :value="old('search')" />
+            <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full" type="text" name="search"
+                :value="old('search')" />
             <x-floating-label for="search" :value="__('Search')" />
         </div>
         <div class="absolute top-3 right-3">
@@ -55,48 +52,53 @@
     <div class="container overflow-x-auto">
         <x-table>
             <x-slot name="head">
-                <x-table.heading sortable multi-column wire:click="sortBy('id')" :direction="$sortField == 'id' ? $sortDirection : null">
+                <x-table.heading sortable multi-column wire:click="sortBy('id')"
+                    :direction="$sortField == 'id' ? $sortDirection : null">
                     ID
                 </x-table.heading>
-                <x-table.heading sortable multi-column wire:click="sortBy('log_name')" :direction="$sortField == 'log_name' ? $sortDirection : null"> Log Name
+                <x-table.heading sortable multi-column wire:click="sortBy('log_name')"
+                    :direction="$sortField == 'log_name' ? $sortDirection : null"> Log Name
                 </x-table.heading>
-                <x-table.heading sortable multi-column wire:click="sortBy('description')" :direction="$sortField == 'description' ? $sortDirection : null">
+                <x-table.heading sortable multi-column wire:click="sortBy('description')"
+                    :direction="$sortField == 'description' ? $sortDirection : null">
                     Description </x-table.heading>
-                <x-table.heading sortable multi-column wire:click="sortBy('event')" :direction="$sortField == 'event' ? $sortDirection : null"> Event
+                <x-table.heading sortable multi-column wire:click="sortBy('event')"
+                    :direction="$sortField == 'event' ? $sortDirection : null"> Event
                 </x-table.heading>
-                <x-table.heading sortable multi-column wire:click="sortBy('created_at')" :direction="$sortField == 'created_at' ? $sortDirection : null">
+                <x-table.heading sortable multi-column wire:click="sortBy('created_at')"
+                    :direction="$sortField == 'created_at' ? $sortDirection : null">
                     Created At </x-table.heading>
             </x-slot>
             <x-slot name="body">
                 @forelse ($logs as $log)
-                    <x-table.row wire:loading.class="opacity-50" striped>
-                        <x-table.cell class="cell">
-                            {{ $log->id }}
-                        </x-table.cell>
-                        <x-table.cell class="cell">
-                            {{ $log->log_name }}
-                        </x-table.cell>
-                        <x-table.cell class="cell">
-                            {{ $log->description }}
-                        </x-table.cell>
-                        <x-table.cell class="cell">
-                            <x-chip :event="$log->event" />
-                        </x-table.cell>
-                        <x-table.cell class="cell">
-                            {{ $log->created_at->format('F j, Y h:i:s A') }}
-                        </x-table.cell>
-                    </x-table.row>
+                <x-table.row wire:loading.class="opacity-50" striped>
+                    <x-table.cell class="cell">
+                        {{ $log->id }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $log->log_name }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $log->description }}
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        <x-chip :event="$log->event" />
+                    </x-table.cell>
+                    <x-table.cell class="cell">
+                        {{ $log->created_at->format('F j, Y h:i:s A') }}
+                    </x-table.cell>
+                </x-table.row>
                 @empty
-                    <td class="py-6" colspan="5">
-                        <div class="flex flex-col justify-center place-items-center align-center">
-                            <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
-                            <div class="">
-                                <p class="mt-5 text-gray-500">
-                                    No data available ...
-                                </p>
-                            </div>
+                <td class="py-6" colspan="5">
+                    <div class="flex flex-col justify-center place-items-center align-center">
+                        <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
+                        <div class="">
+                            <p class="mt-5 text-gray-500">
+                                No data available ...
+                            </p>
                         </div>
-                    </td>
+                    </div>
+                </td>
                 @endforelse
             </x-slot>
         </x-table>

@@ -10,6 +10,7 @@ use App\Http\Controllers\{
 };
 
 use App\Http\Livewire\AccountLogs;
+use App\Http\Livewire\HousingUnit\HousingUnit;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,9 +38,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('roles', RolesController::class);
     Route::resource('housingprojects', HousingUnitController::class);
 
-    Route::resource('applicants', ApplicantsController::class);
+    Route::resource('applicants', ApplicantsController::class)->except('show');
+    Route::get('applicants/{applicant}', [ApplicantsController::class, 'show'])->name('applicants.show')->withTrashed();
+
 
     Route::resource('accountlogs', AccountLogsController::class);
+
+    Route::get('housingunits', HousingUnit::class)->name('housingunits');
+
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

@@ -76,7 +76,7 @@ class ApplicantsController extends Controller
      */
     public function show(Applicant $applicant)
     {
-        $applicant->load('info', 'spouse', 'housing_project', 'family_composition');
+        $applicant->load('info', 'spouse', 'housing_project', 'family_composition', 'requirements:description');
         return view('applicants.show', compact('applicant'));
     }
 

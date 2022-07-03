@@ -10,6 +10,10 @@ class ApplicantsInfo extends Model
     use HasFactory;
     // protected $appends = ['full_name'];
 
+    protected $casts = [
+        'income_per_month' => 'integer',
+    ];
+
     protected $fillable = [
         'first_name',
         'middle_name', // nullable
@@ -32,6 +36,7 @@ class ApplicantsInfo extends Model
         return sprintf(
             '%s %s',
             $this->first_name,
+            $this->middle_name,
             $this->last_name
         );
     }

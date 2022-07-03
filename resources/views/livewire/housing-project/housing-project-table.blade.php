@@ -1,8 +1,8 @@
 <div class="mt-5">
-    <div class="flex justify-between relative mb-5">
-        <button class="px-4 py-2 text-sm font-medium leading-5 text-center
-        text-white transition-colors duration-150 bg-blue-1000 border border-transparent rounded-lg active:bg-blue-900
-        hover:bg-blue-700 focus:outline-none focus:ring" wire:click='$emit("openModal", "housing-unit.create-modal")'>
+    <div class="relative flex justify-between mb-5">
+        <button
+            class="px-4 py-2 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 border border-transparent rounded-lg bg-blue-1000 active:bg-blue-900 hover:bg-blue-700 focus:outline-none focus:ring"
+            wire:click='$emit("openModal", "housing-project.create-modal")'>
             {{ __('New Housing Project') }}
         </button>
 
@@ -35,7 +35,7 @@
                         <th scope="col" class="px-6 py-3">
                             Description
                         </th>
-                        <th scope="col" class="px-6 py-3  text-center">
+                        <th scope="col" class="px-6 py-3 text-center">
                             Action
                         </th>
                     </tr>
@@ -44,7 +44,7 @@
 
                 <tbody>
                     @forelse ($housings as $housing)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-gray-900 dark:text-white">
+                    <tr class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                         <td class="px-6 py-4">
                             {{ $housing->id }}
                         </td>
@@ -64,16 +64,16 @@
                         <td class="px-6 py-4 text-center ">
                             <div class="flex justify-between ">
 
-                                <div class="w-full transform font-medium hover:text-purple-500 hover:scale-110 ">
+                                <div class="w-full font-medium transform hover:text-purple-500 hover:scale-110 ">
 
-                                    <button wire:click='$emit("openModal", "housing-unit.edit-modal" , {{
+                                    <button wire:click='$emit("openModal", "housing-project.edit-modal" , {{
                                         json_encode(["housingproject" => $housing->id]) }})'>
                                         Edit
                                     </button>
                                 </div>
 
                                 <div
-                                    class="w-full transform font-medium text-red-600 hover:text-red-900 hover:scale-110">
+                                    class="w-full font-medium text-red-600 transform hover:text-red-900 hover:scale-110">
                                     <button type="submit"
                                         wire:click='$emit("openModal", "confirm-delete-modal" , {{ json_encode([$housing->id]) }})'>
                                         Move to Trash
@@ -85,7 +85,7 @@
                     </tr>
                     @empty
                     <td class="py-6" colspan="4">
-                        <div class="flex justify-center flex-col place-items-center align-center">
+                        <div class="flex flex-col justify-center place-items-center align-center">
                             <img class="w-24 h-24" src="{{ asset('images/empty.svg') }}" alt="Empty" />
                             <div class="">
                                 <p class="mt-5">

@@ -1,6 +1,6 @@
 <div>
     <div class="w-9/12 ">
-        <div class="bg-white w-96  overflow-auto shadow-sm sm:rounded-lg">
+        <div class="overflow-auto bg-white shadow-sm w-96 sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
 
                 <form method="POST" action="{{  route('housingprojects.update', $housingproject )}}"
@@ -8,10 +8,10 @@
                     @method('PUT')
                     @csrf
                     <div class="mb-5">
-                        <p class="font-medium text-xl text-left">Create new Housing Project</p>
-                        <p class="text-gray-500 text-sm text-left">All fields are required</p>
+                        <p class="text-xl font-medium text-left">Create new Housing Project</p>
+                        <p class="text-sm text-left text-gray-500">All fields are required</p>
                     </div>
-                    {{ $housingproject }}
+
                     <div>
                         <div class="mt-4">
                             <div class="relative">
@@ -20,7 +20,7 @@
                                 <x-floating-label for="project" :value="__('Project')" />
                             </div>
                             @error('project')
-                            <p id="outlined_error_help" class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                            <p id="outlined_error_help" class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                 $message
                                 }}</p>
                             @enderror
@@ -32,7 +32,7 @@
                                 <x-floating-label for="location" :value="__('Location')" />
                             </div>
                             @error('location')
-                            <p id="outlined_error_help" class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                            <p id="outlined_error_help" class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                 $message
                                 }}</p>
                             @enderror
@@ -45,7 +45,7 @@
                                 <x-floating-label for="description" :value="__('Description')" />
                             </div>
                             @error('description')
-                            <p id="outlined_error_help" class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                            <p id="outlined_error_help" class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                 $message
                                 }}</p>
                             @enderror
