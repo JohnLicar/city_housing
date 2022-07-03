@@ -13,8 +13,6 @@ class FilterModal extends ModalComponent
         'start'  => '',
         'end'  => '',
         'office'  => '',
-        'startAge'  => '',
-        'ednAge'  => '',
     ];
     public function render()
     {

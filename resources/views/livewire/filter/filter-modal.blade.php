@@ -6,7 +6,7 @@
                 <p class="text-gray-500 text-sm text-left">All fields are required</p>
             </div>
             <div class="grid grid-cols-2 gap-6 ">
-                <div class="mt-14">
+                <div class="mt-5">
                     <select wire:model="filterable.civil_status" name="civil_status" id="civil_status" class="'block p-3 w-full text-sm
                 text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
@@ -31,6 +31,16 @@
                         </option>
                     </select>
                 </div>
+
+
+                <div>
+                    <div class="relative mt-5">
+                        <x-floating-input type="text" id="office" name="office" wire:model="filterable.office"
+                            class="block w-full border-2 " required />
+                        <x-floating-label for="office" :value="__('Office')" />
+                    </div>
+                </div>
+
                 <div>
                     <span>Income per Month</span>
                     <div class="flex justify-center gap-2">
@@ -56,45 +66,7 @@
                     </div>
                 </div>
 
-                {{-- <div>
-                    <div class="relative mt-5">
-                        <x-floating-input type="text" id="office" name="office" wire:model="filterable.office"
-                            class="block w-full border-2 " required />
-                        <x-floating-label for="office" :value="__('Office')" />
-                    </div>
-                </div>
 
-                <div>
-                    <div class="relative mt-5">
-                        <x-floating-input type="text" id="office" name="office" class="block w-full border-2 "
-                            required />
-                        <x-floating-label for="office" :value="__('Office')" />
-                    </div>
-                </div> --}}
-
-
-                <div>
-                    <span>Age</span>
-                    <div class="flex justify-center gap-2">
-                        <div>
-                            <span>From</span>
-                            <div class="relative">
-                                <x-floating-input wire:model="filterable.startAge" type="text" id="startAge"
-                                    name="startAge" class="block w-full border-2 " required />
-                                <x-floating-label for="office" :value="__('Age')" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <span>From</span>
-                            <div class="relative">
-                                <x-floating-input wire:model="filterable.endAge" type="text" id="startAge"
-                                    name="startAge" class="block w-full border-2 " required />
-                                <x-floating-label for="office" :value="__('Age')" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div>
                     <span>Birthday</span>

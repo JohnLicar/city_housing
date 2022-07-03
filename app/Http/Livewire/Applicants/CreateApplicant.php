@@ -157,12 +157,11 @@ class CreateApplicant extends Component
 
         $familyMember = FamilyComposition::query()
             ->with('applicantInfo')
-            ->where('first_name', 'like',   '%' . $this->first_name . '%')
-            ->where('middle_name', 'like',   '%' . $this->middle_name . '%')
-            ->where('last_name', 'like',   '%' . $this->last_name . '%')
+            ->whereLike('first_name', $this->first_name)
+            ->whereLike('middle_name', $this->middle_name)
+            ->whereLike('last_name', $this->last_name)
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(2);
-        // dd($familyMember);
 
         return view('livewire.applicants.create-applicant', compact('applicants', 'spouses', 'familyMember', 'requirements'));
     }

@@ -21,12 +21,12 @@ class FamilyComposition extends Model
             null,
             '',
             [ApplicantsInfo::class => 'applicant_info_id']
-        );
+        )->withTrashed('applicants.deleted_at');
     }
 
     public function applicant()
     {
-        return $this->belongsTo(Applicant::class, 'applicant_info_id', 'id');
+        return $this->belongsTo(Applicant::class, 'applicant_id', 'id');
     }
 
 

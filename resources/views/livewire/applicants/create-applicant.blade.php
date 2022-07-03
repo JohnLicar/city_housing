@@ -351,7 +351,7 @@
                                 {{ $familyinfo->relation }}
                             </x-table.cell>
                             <x-table.cell class="cell">
-                                {{ $familyinfo->applicantInfo->first_name }}
+                                {{ $familyinfo->applicantInfo->full_name }}
                             </x-table.cell>
 
                             <x-table.cell class="cell">
