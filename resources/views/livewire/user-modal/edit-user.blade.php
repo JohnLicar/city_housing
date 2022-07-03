@@ -1,7 +1,7 @@
 <div>
-    <div class="w-9/12 ">
-        <div class="bg-white w-96  overflow-auto shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
+    <div class="w-9/12">
+        <div class="bg-white w-96 overflow-auto shadow-sm sm:rounded-lg">
+            <div class="pt-6 pb-4 px-6 bg-white border-b border-gray-200">
 
                 <form method="POST" action="{{  route('users.update', $user) }}" enctype="multipart/form-data">
                     @method('PUT')
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <select wire:model="gender" id="gender" name="gender" class="block px-2.5 pb-2.5 pt-4 w-full text-sm
+                            <select wire:model="gender" id="gender" name="gender" class="block px-2.5 py-3 w-full text-sm
                         text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                         dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                 <option>Select Gender</option>
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <select wire:model="role" id="role" name="role" class="block px-2.5 pb-2.5 pt-4 w-full text-sm
+                            <select wire:model="role" id="role" name="role" class="block px-2.5 py-3 w-full text-sm
                         text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                         dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                 <option>Select Role</option>
@@ -112,7 +112,7 @@
                             @enderror
                         </div>
 
-                        <div class="mt-4">
+                        {{-- <div class="mt-4">
                             <select wire:model="approve" id="approve" name="approve" class="block px-2.5 pb-2.5 w-full text-sm
                         text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                         dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
@@ -130,19 +130,17 @@
                                 $message
                                 }}</p>
                             @enderror
-                        </div>
-
+                        </div> --}}
                     </div>
-
 
                     <div class="mt-4">
                         <div class="flex items-center justify-end mt-4">
-                            <x-back-button wire:click="$emit('closeModal')" class="ml-3">
-                                {{ __('Back') }}
-                            </x-back-button>
-                            <x-button class="ml-3">
+                            <x-button.text-button btnType="secondary" wire:click="$emit('closeModal')">
+                                {{ __('Cancel') }}
+                            </x-button.text-button>
+                            <x-button.text-button btnType="success">
                                 {{ __('Update') }}
-                            </x-button>
+                            </x-button.text-button>
                         </div>
                     </div>
                 </form>

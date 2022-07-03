@@ -132,49 +132,15 @@
                             </p>
                             @enderror
                         </div>
-
-                        <!-- Input[ype="old_password"] -->
                         <div class="mt-4">
                             <div class="relative">
-                                <x-floating-input type="password" id="old_password" name="old_password"
-                                    class="block w-full" />
-                                <x-floating-label for="old_password" :value="__('Old Password')" />
+                                <x-button type="button" btnType="primary" onclick="Livewire.emit('openModal', 'settings.change-password')">Change Password</x-button>
                             </div>
-                            @error('old_password')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
-                                }}
-                            </p>
-                            @enderror
                         </div>
 
-                        <!-- Input[ype="password"] -->
-                        <div class="mt-4">
-                            <div class="relative">
-                                <x-floating-input type="password" id="password" name="password" class="block w-full" />
-                                <x-floating-label for="password" :value="__('Password')" />
-                            </div>
-                            @error('password')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
-                                }}
-                            </p>
-                            @enderror
-                        </div>
-
-                        <div class="mt-4">
-                            <div class="relative">
-                                <x-floating-input type="password" id="confirm_password" name="password_confirmation"
-                                    class="block w-full  " />
-                                <x-floating-label for="password_confirmation" :value="__('Confirm Password')" />
-                            </div>
-                            @error('password_confirmation')
-                            <p id="outlined_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message
-                                }}</p>
-                            @enderror
-                        </div>
                         <div class="col-end-3">
                             <div class="flex justify-end gap-2 mt-4">
-                                <x-button
-                                    class="block w-40 text-white bg-green-1000 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                <x-button btnType="success">
                                     {{ __('Save Changes') }}
                                 </x-button>
 

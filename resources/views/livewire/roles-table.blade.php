@@ -29,7 +29,8 @@
                 Role
             </x-table.heading>
             <x-table.heading>
-                Permissions </x-table.heading>
+                Permissions 
+            </x-table.heading>
             <x-table.heading>
                 No. of Users
             </x-table.heading>

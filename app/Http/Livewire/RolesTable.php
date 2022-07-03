@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Livewire\DataTable\WithSorting;
+use Illuminate\Support\Facades\Artisan;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -26,4 +27,10 @@ class RolesTable extends Component
             ->paginate(10);
         return view('livewire.roles-table', compact('roles'));
     }
+
+    // public function exportDB()
+    // {
+    //     Artisan::call('backup:run --only-db');
+    //     $this->emit('showToastNotification', ['title' => 'DB Backup', 'message' => 'Database backup started...']);
+    // }
 }

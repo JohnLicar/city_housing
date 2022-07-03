@@ -34,8 +34,9 @@
 
         </div>
         <div>
-            <x-button type="button" class="px-11 bg-red-1000 hover:bg-red-700 active:bg-red-900 "
-                wire:click="removePhoto">Remove
+            <x-button type="button" btnType="error"
+                wire:click="removePhoto">
+                Remove Photo
             </x-button>
         </div>
 

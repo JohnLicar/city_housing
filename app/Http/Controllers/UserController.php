@@ -23,7 +23,12 @@ class UserController extends Controller
         $pendingUsers = User::where('approve', false)->count();
         $trashedUsers = User::onlyTrashed()->count();
 
-        return view('users.index', compact('totalUsers', 'pendingUsers', 'trashedUsers'));
+        $prevMonthUsers = User::where('created_at', '<', now()->startOfMonth()->subMonth())->count();
+        $currentMonthUsers = User::where('created_at', '>', now()->startOfMonth())->count();
+
+        $stats = $prevMonthUsers > 0 ? (($currentMonthUsers - $prevMonthUsers) * 100 / $prevMonthUsers) : ($currentMonthUsers > 0 ? '100%' : '0');
+
+        return view('users.index', compact('totalUsers', 'pendingUsers', 'trashedUsers', 'stats'));
     }
 
     /**

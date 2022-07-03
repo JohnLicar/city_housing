@@ -7,11 +7,8 @@ use LivewireUI\Modal\ModalComponent;
 
 class UserDetailModal extends ModalComponent
 {
-
     public $user;
     public $archive;
-
-
 
     public function mount($user, $archive = null)
     {
@@ -23,5 +20,16 @@ class UserDetailModal extends ModalComponent
     public function render()
     {
         return view('livewire.user-detail-modal');
+    }
+
+    public function approveUser()
+    {
+        $user = User::where('id', $this->user->id)->first();
+        $user->update([
+            'approve' => 1
+        ]);
+
+        $this->emit('showToastNotification', ['type' => 'success', 'title' => 'Account Approved', 'message' => 'User account has been approved.']);
+        $this->closeModal();    
     }
 }

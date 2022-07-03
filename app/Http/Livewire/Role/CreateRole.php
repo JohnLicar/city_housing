@@ -14,6 +14,10 @@ class CreateRole extends ModalComponent
     public $permissions ;
     public $selectedPermissions = [];
 
+    protected $rules = [
+        'role' => ['required', 'unique:roles']
+    ];
+
     public function render()
     {
         return view('livewire.role.create-role');
@@ -28,6 +32,7 @@ class CreateRole extends ModalComponent
     public function saveRole()
     {
         $this->authorize('role_create');
+        $this->validate();
         $role = Role::create([
             'name' => $this->role
         ]);

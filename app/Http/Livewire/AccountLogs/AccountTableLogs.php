@@ -49,8 +49,7 @@ class AccountTableLogs extends Component
     }
 
     public function resetFilter(){
-        $this->start = null;
-        $this->end = null;
+        $this->resetExcept('search');
     }
    
 }
