@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\HousingUnit;
+namespace App\Http\Livewire\HousingProject;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
@@ -27,6 +27,6 @@ class CreateModal extends ModalComponent
     public function render()
     {
         // $this->authorize('housingprojct_create');
-        return view('livewire.housing-unit.create-modal');
+        return view('livewire.housing-project.create-modal');
     }
 }

@@ -22,17 +22,17 @@ class Applicant extends Model
 
     public function info()
     {
-        return $this->belongsTo(ApplicantsInfo::class, 'applicant_info_id', 'id');
+        return $this->belongsTo(ApplicantsInfo::class, 'applicant_info_id', 'id')->withTrashed();
     }
 
     public function spouse()
     {
-        return $this->belongsTo(Spouse::class, 'spouse_id', 'id');
+        return $this->belongsTo(Spouse::class, 'spouse_id', 'id')->withTrashed();
     }
 
     public function family_composition()
     {
-        return $this->hasMany(FamilyComposition::class); //Rule alp
+        return $this->hasMany(FamilyComposition::class)->withTrashed(); //Rule alp
     }
 
     public function housing_project()
@@ -40,9 +40,15 @@ class Applicant extends Model
         return $this->belongsTo(HousingProject::class, 'housing_project_id', 'id');
     }
 
+    
+    public function requirements()
+    {
+        return $this->belongsToMany(Requirement::class, 'applicants_requirments');
+    }
+
     public function real_holding()
     {
-        return $this->belongsTo(RealHolding::class, 'real_holding_id', 'id');
+        return $this->belongsTo(RealHolding::class, 'real_holding_id', 'id')->withTrashed();
     }
 
     public static function search($search)

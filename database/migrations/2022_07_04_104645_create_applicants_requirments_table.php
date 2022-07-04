@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('spouses', function (Blueprint $table) {
+        Schema::create('applicants_requirments', function (Blueprint $table) {
             $table->id();
-            $table->string('spouse_first_name');
-            $table->string('spouse_middle_name')->nullable();
-            $table->string('spouse_last_name');
-            $table->softDeletes();
-
+            $table->foreignId('applicant_id')->constrained('applicants');
+            $table->foreignId('requirement_id')->constrained('requirements');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spouses');
+        Schema::dropIfExists('applicants_requirments');
     }
 };

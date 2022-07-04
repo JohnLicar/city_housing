@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
 
         $this->call([
             RolesAndPermissionsSeeder::class,
@@ -22,9 +21,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RealHoldingSeeder::class,
             ApplicantSeeder::class,
-            // ApplicantsRealHoldingSeeder::class,
             FamilyCompositionSeeder::class,
+            RequirementSeeder::class,
         ]);
-        // $this->call();
     }
 }

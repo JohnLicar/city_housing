@@ -6,8 +6,11 @@
             wire:click='$emit("openModal", "user-modal.create-user")'>
             {{ __('New User') }}
         </button>
-        <div class="relative flex justify-content-end w-2/5">
-            <x-button-dropdown.button-dropdown class="mr-2 whitespace-nowrap">
+        <div class="relative flex space-x-2 justify-content-end w-2/5">
+            <x-button nowrap wire:click="$set('showFilterModal', true)">
+                Filter Data
+            </x-button>
+            {{-- <x-button-dropdown.button-dropdown class="mr-2 whitespace-nowrap">
                 Filter Data
                 <x-slot name="content">
                     <div class="px-4 py-3 text-sm bg-gray-100 text-gray-900 dark:text-white">
@@ -55,7 +58,7 @@
                         </div>
                     </x-button-dropdown.content>
                 </x-slot>
-            </x-button-dropdown.button-dropdown>
+            </x-button-dropdown.button-dropdown> --}}
 
             <div class="relative w-full">
                 <x-floating-input wire:model.debounce.400ms="search" id="search" class="w-full" type="text"
@@ -88,6 +91,9 @@
                     <x-table.heading sortable wire:click="sortBy('contact')" :direction="$sortField == 'contact' ? $sortDirection : null">
                         Contact
                     </x-table.heading>
+                    <x-table.heading sortable wire:click="sortBy('approve')" :direction="$sortField == 'approve' ? $sortDirection : null">
+                        Approval Status
+                    </x-table.heading>
                     <x-table.heading sortable wire:click="sortBy('created_at')" :direction="$sortField == 'created_at' ? $sortDirection : null">
                         Created On
                     </x-table.heading>
@@ -96,7 +102,7 @@
                     </x-table.heading>
                 </x-slot>
                 <x-slot name="body">
-    
+
                     @forelse ($users as $user)
                         <x-table.row wire:key="{{ $user->id }}" wire:loading.class="opacity-50">
                             <x-table.cell class="cell">
@@ -123,6 +129,9 @@
                             </x-table.cell>
                             <x-table.cell class="whitespace-nowrap">
                                 {{ $user->contact }}
+                            </x-table.cell>
+                            <x-table.cell class="whitespace-nowrap">
+                                <x-chip :event="$user->approve ? 'Approved' : 'Pending'"></x-chip>
                             </x-table.cell>
                             <x-table.cell class="whitespace-nowrap">
                                 {{ $user->created_at->format('F j, Y h:i:s A') }}
@@ -165,4 +174,59 @@
         </div>
     </div>
 
+    <x-modal.dialog wire:model.defer="showFilterModal">
+        <x-slot name="title">
+            Filter Data
+            <hr class="mt-3"/>
+        </x-slot>
+
+        <x-slot name="content">
+            <div class="flex items-center justify-center">
+                <div class="flex flex-col">
+                    <span>From</span>
+                    <input wire:model.defer="start" id="datepicker" type="date"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Select date">
+                </div>
+                <div class="mx-2 mt-3.5">
+                    <span>to</span>
+                </div>
+                <div class="flex flex-col">
+                    <span>To</span>
+                    <input wire:model.defer="end" id="datepicker" type="date"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Select date">
+                </div>
+            </div>
+            <div class="relative w-full">
+                <p class="mt-2">Account Status</p>
+                <select wire:model.defer="approval_status" id="approval_status" name="approval_status"
+                    class="block px-2.5 py-3 w-full text-sm
+                text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
+                dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                    <option disabled>Select Status</option>
+                    <option value="All Data">
+                        All Data
+                    </option>
+                    <option value="Approved" @if ($approval_status === 1) selected @endif>Approved
+                    </option>
+                    <option value="Pending" @if ($approval_status === 0) selected @endif>Pending
+                    </option>
+                </select>
+            </div>
+            <div class="flex justify-end mt-4">
+                <x-button.text-button btnType="primary" wire:click="resetFilter">
+                    Reset Filter
+                </x-button.text-button>
+            </div>
+        </x-slot>
+        <x-slot name="footer">
+            <x-button btnType="secondary" wire:click="$set('showFilterModal', false)">
+                Close
+            </x-button>
+            <x-button btnType="success" wire:click="setFilter">
+                Filter Data
+            </x-button>
+        </x-slot>
+    </x-modal.dialog>
 </div>

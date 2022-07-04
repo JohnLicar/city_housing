@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('spouses', function (Blueprint $table) {
+        Schema::create('housing_units', function (Blueprint $table) {
             $table->id();
-            $table->string('spouse_first_name');
-            $table->string('spouse_middle_name')->nullable();
-            $table->string('spouse_last_name');
-            $table->softDeletes();
-
+            $table->foreignId('housing_project_id')->constrained('housing_projects');
+            $table->string('block_no');
+            $table->string('lot_no');
+            $table->string('phase_no')->nullable();
+            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spouses');
+        Schema::dropIfExists('housing_unit');
     }
 };

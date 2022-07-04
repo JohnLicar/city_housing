@@ -5,6 +5,14 @@
 
 switch ($event) {
 
+case 'Approved':
+$class = 'bg-green-500';
+break;
+
+case 'Pending':
+$class = 'bg-red-500';
+break;
+
 case 'Login Success':
 $class = 'bg-green-500';
 break;

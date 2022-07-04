@@ -284,5 +284,21 @@
             </x-table>
         </div>
 
+
+        <div class="mt-5">
+            <p class="font-medium text-lg">Requirements</p>
+
+            <div class="grid grid-cols-4 gap-6 mb-5">
+                @foreach ($applicant->requirements as $requirement)
+                <div class="text-sm
+                bg-transparent mt-5">
+                    <li class=" text-cool-gray-900">
+                        {{ $requirement->description ?? '' }}
+                    </li>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 </x-app-layout>

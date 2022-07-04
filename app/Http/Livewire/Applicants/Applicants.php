@@ -12,70 +12,94 @@ class Applicants extends Component
     use WithPagination, WithSorting;
     public $search = '';
     public $civil_status;
-    public $income_per_month;
+    public $start_income_per_month;
+    public $end_income_per_month;
     public $start;
+    public $end;
     public $office;
 
     protected $listeners = [
-        'civilStatus' => 'updateCivilStatus',
-        'income_per_month' => 'updateIncomePerMonth',
-        'start' => 'updateStart',
-        'office' => 'updateOffice',
+        'filter' => 'filter',
+        'reset' => 'filter',
+        'ApplicantTableRefreshEvent' => 'render',
     ];
 
 
-    public function updateCivilStatus($value)
-    {
-        $this->civil_status = $value;
-        $this->emitSelf('render');
-    }
 
-    public function updateIncomePerMonth($value)
+    public function filter($value)
     {
-        $this->income_per_month = $value;
-        $this->emitSelf('render');
-    }
-
-    public function updateStart($value)
-    {
-
-        $this->start = $value;
-        $this->emitSelf('render');
-    }
-    
-    public function updateOffice($value)
-    {
-
-        $this->office = $value;
+        $this->civil_status = $value['civil_status'];
+        $this->start_income_per_month = $value['start_income_per_month'];
+        $this->end_income_per_month = $value['end_income_per_month'];
+        $this->office = $value['office'];
+        $this->end = $value['end'];
+        $this->start = $value['start'];
         $this->emitSelf('render');
     }
 
     public function render()
     {
         $applicants = Applicant::search($this->search)
-            ->with('info')
-            ->when($this->civil_status, function ($query, $civil_status) {
-                $query->whereRelation('info', 'civil_status', $civil_status);
-            })
-            ->when($this->income_per_month, function ($query, $income_per_month) {
-                $query->whereRelation('info', 'income_per_month', 'like', '%' . $income_per_month . '%');
-            })
-            ->when($this->office, function ($query, $office) {
-                $query->whereRelation('info', 'office', $office);
-            })
-            // ->whereHas('info', function ($query) {
-            //     $query->orWhere('birth_date', $this->start);
-            // })
+            ->with('info', 'spouse')
+            ->where(
+                fn ($query) =>
+                $query
+                    ->when(
+                        $this->civil_status,
+                        fn ($query) =>
+                        $query->whereRelation('info', 'civil_status', $this->civil_status)
+                    )
+
+                    ->when(
+                        $this->start_income_per_month,
+                        fn ($query) =>
+                        $query->whereRelation('info', 'income_per_month', '>=', $this->start_income_per_month)
+                    )
+                    ->when(
+                        $this->end_income_per_month,
+                        fn ($query) =>
+                        $query->whereRelation('info', 'income_per_month', '<=', $this->end_income_per_month)
+                    )
+
+                    ->when($this->office, function ($query) {
+                        $query->whereRelation('info', 'office', $this->office);
+                    })
+                    ->when(
+                        $this->start,
+                        fn ($query) =>
+                        $query->whereRelation('info', 'birth_date', '>=', $this->start)
+                    )
+                    ->when(
+                        $this->end,
+                        fn ($query) =>
+                        $query->whereRelation('info', 'birth_date', '<=', $this->end)
+                    )
+
+
+            )
 
             ->orderBy($this->sortField, $this->sortDirection)
-            ->paginate(5);
+            ->paginate(5, ['*'], 'applicant');
 
-            // dd($applicants);
-        return view('livewire.applicants.applicants', compact('applicants'));
+        $archivedApplicants = Applicant::onlyTrashed()
+            ->with('info', 'spouse')
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->paginate(5, ['*'], 'archivedapplicant');
+
+        return view('livewire.applicants.applicants', compact('applicants', 'archivedApplicants'));
     }
 
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function resetFilter()
+    {
+        $this->start = null;
+        $this->end = null;
+        $this->civil_status = null;
+        $this->income_per_month = null;
+        $this->office = null;
     }
 }

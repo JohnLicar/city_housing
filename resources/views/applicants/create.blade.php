@@ -1,18 +1,18 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <x-auth-validation-errors />
                 <h2 class="my-6 ml-5 text-2xl font-semibold text-gray-700">
                     Applicants Information
                 </h2>
-                <div class="p-6 bg-white border-b border-gray-200">
-
+                <div class="p-6 bg-white ">
+                    {{--
                     <form method="POST" action="{{  route('applicants.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="border-b border-gray-200 pb-5">
+                        <div class="pb-5 border-b border-gray-200">
 
-                            <p class="font-medium text-base">Housing Project</p>
+                            <p class="text-base font-medium">Housing Project</p>
                             <div class="grid grid-cols-4 gap-6 mb-5">
                                 <div class="mt-4">
                                     <div class="relative">
@@ -22,7 +22,7 @@
                                     </div>
                                     @error('phase_no')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -36,7 +36,7 @@
                                     </div>
                                     @error('block_no')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -50,14 +50,14 @@
                                     </div>
                                     @error('block_no')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
                                 </div>
 
                                 <div class="mt-4">
-                                    <select name="housing_project_id" id="housing_project_id" class=" 'block p-3 w-full text-sm
+                                    <select name="housing_project_id" id="housing_project_id" class="'block p-3 w-full text-sm
                                 text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                                 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                         @foreach ($housing_projects as $housing)
@@ -72,7 +72,7 @@
                             </div>
 
 
-                            <p class="font-medium text-base">Basic Info</p>
+                            <p class="text-base font-medium">Basic Info</p>
                             <div class="grid grid-cols-3 gap-6 ">
                                 <div class="mt-4">
                                     <div class="relative">
@@ -82,7 +82,7 @@
                                     </div>
                                     @error('first_name')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -96,7 +96,7 @@
                                     </div>
                                     @error('middle_name')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -110,7 +110,7 @@
                                     </div>
                                     @error('last_name')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -124,13 +124,11 @@
                                     </div>
                                     @error('suffix')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
                                 </div>
-
-
 
                                 <div class="mt-4">
                                     <div class="relative">
@@ -141,7 +139,7 @@
                                     </div>
                                     @error('birth_date')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -155,7 +153,7 @@
                                     </div>
                                     @error('place_of_birth')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -163,7 +161,7 @@
 
                                 <div class="mt-4">
                                     <select name="civil_status" id="civil_status"
-                                        class=" 'block p-3 w-full text-sm
+                                        class="'block p-3 w-full text-sm
                                     text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600
                                     dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                         <option value="Single">
@@ -191,7 +189,7 @@
                                     </div>
                                     @error('citizenship')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -205,7 +203,7 @@
                                     </div>
                                     @error('brgy_origin')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -219,7 +217,7 @@
                                     </div>
                                     @error('contact')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -233,7 +231,7 @@
                                     </div>
                                     @error('office')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -247,7 +245,7 @@
                                     </div>
                                     @error('tin_no')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -261,7 +259,7 @@
                                     </div>
                                     @error('govt_id')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -276,15 +274,14 @@
                                     </div>
                                     @error('income_per_month')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
                                 </div>
                             </div>
 
-                            {{-- Spouse Information --}}
-                            <p class="font-medium text-base mt-5">Spouse Info</p>
+                            <p class="mt-5 text-base font-medium">Spouse Info</p>
                             <div class="grid grid-cols-3 gap-6 ">
                                 <div class="mt-4">
                                     <div class="relative">
@@ -294,7 +291,7 @@
                                     </div>
                                     @error('spouse_first_name')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -308,7 +305,7 @@
                                     </div>
                                     @error('spouse_middle_name')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -322,7 +319,7 @@
                                     </div>
                                     @error('spouse_last_name')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -336,7 +333,7 @@
                                     </div>
                                     @error('spouse_birth_date')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -351,7 +348,7 @@
                                     </div>
                                     @error('spouse_place_of_birth')
                                     <p id="outlined_error_help"
-                                        class="mt-2 text-left text-xs text-red-600 dark:text-red-400">{{
+                                        class="mt-2 text-xs text-left text-red-600 dark:text-red-400">{{
                                         $message
                                         }}</p>
                                     @enderror
@@ -361,10 +358,9 @@
                             </div>
                         </div>
 
-                        {{-- Split --}}
-                        <p class="font-medium text-base mt-5">Family Composition</p>
+                        <p class="mt-5 text-base font-medium">Family Composition</p>
 
-                        <div class="border-b border-gray-200 pb-5">
+                        <div class="pb-5 border-b border-gray-200">
                             @livewire('applicants.add-family-composition')
                         </div>
                         <div class="flex items-center justify-end mt-4">
@@ -375,7 +371,9 @@
                                 {{ __('Create') }}
                             </x-button>
                         </div>
-                    </form>
+                    </form> --}}
+
+                    @livewire('applicants.create-applicant')
                 </div>
             </div>
         </div>

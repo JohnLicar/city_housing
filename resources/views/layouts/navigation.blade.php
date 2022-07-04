@@ -54,18 +54,67 @@
                     </x-nav-link>
                 </li>
 
-                <li class="relative px-6 py-2">
-                    <x-nav-link href="{{ route('housingprojects.index') }}"
-                        :active="request()->routeIs('housingprojects.*')" class="text-[#525252]">
-                        <x-slot name="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                 <li class="relative px-6 py-2">
+                    <button
+                        class="inline-flex items-center w-full gap-6 ml-2 text-base font-semibold text-gray-800 transition-colors duration-150 hover:text-blue-800"
+                        @click="toggleMultiLevelMenu" aria-haspopup="true">
+                        <span class="inline-flex items-center">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                             </svg>
-                        </x-slot>
-                        <span class="">{{ __('Housing Projects') }}
-                    </x-nav-link>
+                            <span class="ml-4">Housing</span>
+                        </span>
+                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <template x-if="isMultiLevelMenuOpen">
+                        <ul x-transition:enter="transition-all ease-in-out duration-300"
+                            x-transition:enter-start="opacity-25 max-h-0" x-transition:enter-end="opacity-100 max-h-xl"
+                            x-transition:leave="transition-all ease-in-out duration-300"
+                            x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0"
+                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md"
+                            aria-label="submenu">
+                            <li
+                                class="right-0 px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+
+                                <a href="{{ route('housingprojects.index') }}"
+                                    class="{{ request()->routeIs('housingprojects.*') ? 'text-[#5283F1]' : 'text-[#525252]' }} flex w-full gap-4"
+                                    :active="request()->routeIs('housingprojects.*')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path
+                                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                                    </svg>
+                                    Project</a>
+                            </li>
+                        </ul>
+                    </template>
+                    <template x-if="isMultiLevelMenuOpen">
+                        <ul x-transition:enter="transition-all ease-in-out duration-300"
+                            x-transition:enter-start="opacity-25 max-h-0" x-transition:enter-end="opacity-100 max-h-xl"
+                            x-transition:leave="transition-all ease-in-out duration-300"
+                            x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0"
+                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md"
+                            aria-label="submenu">
+                            <li
+                                class="right-0 px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+
+                                <a href="{{ route('housingunits') }}"
+                                    class="{{ request()->routeIs('housingunits') ? 'text-[#5283F1]' : 'text-[#525252]' }} flex w-full gap-4"
+                                    :active="request()->routeIs('housingunits')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path
+                                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                                    </svg>
+                                    Unit</a>
+                            </li>
+                        </ul>
+                    </template>
                 </li>
                 @endrole
             </ul>

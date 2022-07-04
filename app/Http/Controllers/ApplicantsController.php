@@ -76,7 +76,7 @@ class ApplicantsController extends Controller
      */
     public function show(Applicant $applicant)
     {
-        $applicant->load('info', 'spouse', 'housing_project', 'family_composition');
+        $applicant->load('info', 'spouse', 'housing_project', 'family_composition', 'requirements:description');
         return view('applicants.show', compact('applicant'));
     }
 
@@ -88,7 +88,11 @@ class ApplicantsController extends Controller
      */
     public function edit(Applicant $applicant)
     {
-        //
+        $housing_projects = HousingProject::get(['id', 'project']);
+
+        $applicant->load('info', 'spouse', 'housing_project', 'family_composition', 'requirements:description');
+
+        return view('applicants.edit', compact('applicant', 'housing_projects'));
     }
 
     /**
@@ -98,9 +102,31 @@ class ApplicantsController extends Controller
      * @param  \App\Models\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Applicant $applicant)
+    public function update(ApplicantsRequest $request, Applicant $applicant)
     {
-        //
+        $applicant->info->update($request->validated());
+        $applicant->spouse->update($request->validated());
+        $applicant->update($request->validated());
+        $applicant->family_composition->upsert([
+            [$request->familyCompositions],
+
+        ], [
+            'first_name',
+            'middle_name',
+            'last_name',
+            'relation',
+            'civil_status',
+            'age',
+            'source_of_income',
+        ], [
+            'first_name',
+            'middle_name',
+            'last_name',
+            'relation',
+            'civil_status',
+            'age',
+            'source_of_income',
+        ]);
     }
 
     /**

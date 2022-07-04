@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('civil_status');
             $table->string('age');
             $table->string('source_of_income');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

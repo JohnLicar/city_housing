@@ -16,6 +16,7 @@ class UserTable extends Component
     public $start;
     public $end;
     public $status;
+    public $showFilterModal = false;
 
     protected $listeners = ['userTableRefreshEvent' => '$refresh'];
 
@@ -46,7 +47,14 @@ class UserTable extends Component
 
     public function setFilter()
     {
-        $this->status = $this->approval_status == 'Pending' ? 0 : 1;
+        if($this->approval_status == 'All Data')
+        {
+            $this->reset('approval_status');
+        }
+        else {
+            $this->status = $this->approval_status == 'Pending' ? 0 : 1;
+        }
+        $this->showFilterModal = false;
         $this->emitSelf('$refresh');
     }
 
