@@ -13,19 +13,19 @@
                 <div class="grid grid-cols-2 gap-2 text-left mt-5">
                     <div class="font-medium text-black">
                         Address:
-                        <p class="text-cool-gray-600 text-base">
+                        <p class="text-cool-gray-600">
                             {{ $user->address ?? '' }}
                         </p>
                     </div>
                     <div class="font-medium text-black">
                         Date Created:
-                        <p class="text-cool-gray-600 text-base">
+                        <p class="text-cool-gray-600">
                             {{ $user->created_at->format('F j, Y h:i:s A') }}
                         </p>
                     </div>
                     <div class="font-medium text-black ">
                         Contact Number:
-                        <p class="text-cool-gray-600 text-base">
+                        <p class="text-cool-gray-600">
                             {{ $user->contact }}
 
                         </p>

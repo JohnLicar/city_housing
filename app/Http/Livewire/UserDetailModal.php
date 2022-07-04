@@ -30,6 +30,7 @@ class UserDetailModal extends ModalComponent
         ]);
 
         $this->emit('showToastNotification', ['type' => 'success', 'title' => 'Account Approved', 'message' => 'User account has been approved.']);
+        $this->emit('userTableRefreshEvent');
         $this->closeModal();    
     }
 }
